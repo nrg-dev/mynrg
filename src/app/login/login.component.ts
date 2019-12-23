@@ -33,16 +33,14 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('currentusername',this.model.currentusername);
     localStorage.setItem('currentpassword',this.model.currentpassword);
 
-    if(this.model.currentusername!=="admin"){
-     // this.alertService.info(message);
-     // this.alertService.warn(message);
-     // this.alertService.success(message);
-      this.alertService.error(message);
-     // this.alertService.success(message);
+    if(this.model.currentusername=="admin" || 
+    this.model.currentusername=="user"||this.model.currentusername=="alex"){
+      this.router.navigate(['/landingpage']);
+
 
     }
     else {
-      this.router.navigate(['/landingpage']);
+      this.alertService.error(message);
 
     }
 

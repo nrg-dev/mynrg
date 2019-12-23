@@ -32,6 +32,7 @@ showToggle: string;
   public notSelected=true;
   //private count=0;
   static showParent: any;
+  public username;
   constructor( private router: Router , public route: ActivatedRoute) { 
     //this.count=route.firstChild.children.length;
     
@@ -63,59 +64,80 @@ showToggle: string;
      }
    });
 
+   this.username=localStorage.getItem("currentusername");
    
-
+   if(localStorage.getItem("currentusername")=="admin"){
+     //admin login
     this.menuItems = [
       new MenuItem("DashBoard","/landingpage"),
-      new MenuItem("Employment","employeelist"),
-      new MenuItem("TimeSheet","timesheet"),
-      new MenuItem("Vendor & Customer","vendoradd"),
-      new MenuItem("Category & Product","categoryadd"),
-      new MenuItem("Purchase","purchaseadd"),
-      new MenuItem("Sales","salesorder"),
-      new MenuItem("Finance","pettycashadd"),
-      new MenuItem("Stock","stockadd"),
-      new MenuItem("Report","allreport"),
-      new MenuItem("User Management","usermgtadd"),
+      new MenuItem("Reports","employeelist"),
       new MenuItem("Log Out","logout"),
-
       new MenuItem("",""),
 
     ]
 
 
     this.menuItemsIcons = [
-      new MenuItem("./assets/images/dashboard.png","/landingpage"),
-      new MenuItem("./assets/images/employee.png","employeelist"),
-      new MenuItem("./assets/images/employee.png","employeelist"),
-     new MenuItem("./assets/images/vendor-customer.png", "Customervendoradd"),
-      new MenuItem("./assets/images/category-product.png", "Productcategoryadd"),
-      new MenuItem("./assets/images/circle-cropped.png","purchaseadd"),
-      new MenuItem("./assets/images/sales.png","salesorder"),
-      new MenuItem("./assets/images/finance.png","pettycashadd"),
-      new MenuItem("./assets/images/stock.png","stockadd"),
-      new MenuItem("./assets/images/reports.png","allreport"),
-      new MenuItem("./assets/images/usermgt.png","usermgtadd"),
+      new MenuItem("./assets/images/menu.png","/landingpage"),
+      new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/logout.png","login"),
-
       new MenuItem('./assets/images/null.png',""),
 
 
-/*
-new MenuItem("home","/landingpage"),
-new MenuItem("./assets/images/employee.png","employeelist"),
-new MenuItem("person", "Customervendoradd"),
-new MenuItem("home", "Productcategoryadd"),
-new MenuItem("shopping_cart","purchaseadd"),
-new MenuItem("home","salesorder"),
-new MenuItem("home","pettycashadd"),
-new MenuItem("home","stockadd"),
-new MenuItem("home","allreport"),
-new MenuItem("contacts","usermgtadd"),
-new MenuItem("home","login"),
-
-*/
     ]
+   }
+   if(localStorage.getItem("currentusername")=="alex"){
+
+    // Alex login
+    this.menuItems = [
+      new MenuItem("DashBoard","/landingpage"),
+      new MenuItem("Job Poral","employeelist"),
+      new MenuItem("Server Info","employeelist"),
+      new MenuItem("My Contacts","employeelist"),
+
+      new MenuItem("Log Out","logout"),
+      new MenuItem("",""),
+
+    ]
+
+
+    this.menuItemsIcons = [
+      new MenuItem("./assets/images/menu.png","/landingpage"),
+      new MenuItem("./assets/images/menu.png","/landingpage"),
+      new MenuItem("./assets/images/menu.png","/landingpage"),
+      new MenuItem("./assets/images/menu.png","/landingpage"),
+      new MenuItem("./assets/images/menu.png","/landingpage"),
+
+      new MenuItem("./assets/images/logout.png","login"),
+      new MenuItem('./assets/images/null.png',""),
+
+
+    ]
+  }
+
+  if(localStorage.getItem("currentusername")=="user"){
+    // User login
+    this.menuItems = [
+      new MenuItem("DashBoard","/landingpage"),
+      new MenuItem("User Management","usermgtadd"),
+      new MenuItem("Log Out","logout"),
+      new MenuItem("",""),
+
+    ]
+
+
+    this.menuItemsIcons = [
+      new MenuItem("./assets/images/menu.png","/landingpage"),
+      new MenuItem("./assets/images/menu.png","employeelist"),
+      new MenuItem("./assets/images/logout.png","login"),
+      new MenuItem('./assets/images/null.png',""),
+
+
+    ]
+  }
+
+
+   
 
   }
 
