@@ -65,7 +65,7 @@ showToggle: string;
    });
 
    this.username=localStorage.getItem("currentusername");
-   
+
    if(localStorage.getItem("currentusername")=="admin"){
      //admin login
     this.menuItems = [
@@ -91,8 +91,8 @@ showToggle: string;
     // Alex login
     this.menuItems = [
       new MenuItem("DashBoard","/landingpage"),
-      new MenuItem("Job Poral","employeelist"),
-      new MenuItem("Server Info","employeelist"),
+      new MenuItem("Job Poral","jobportal"),
+      new MenuItem("Server Info","serverinfo"),
       new MenuItem("My Contacts","employeelist"),
 
       new MenuItem("Log Out","logout"),
@@ -102,7 +102,6 @@ showToggle: string;
 
 
     this.menuItemsIcons = [
-      new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/menu.png","/landingpage"),

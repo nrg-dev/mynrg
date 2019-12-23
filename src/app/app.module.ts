@@ -26,6 +26,7 @@ import { UsermgtModule } from './usermgt/usermgt.module';
 import { ReportModule } from './report/report.module';
 //import { AlertComponent } from './_directives/index';
 import { AlertService, AuthenticationService,UserService } from './_services/index';
+import { AlexModule } from './alex/alex.module';
 
 
 const appRoutes: Routes = [
@@ -42,7 +43,9 @@ const appRoutes: Routes = [
       { path: '', loadChildren: () => FinanceModule },
       { path: '', loadChildren: () => StockModule },
       { path: '', loadChildren: () => ReportModule },
-      { path: '', loadChildren: () => UsermgtModule }
+      { path: '', loadChildren: () => UsermgtModule },
+      { path: '', loadChildren: () => AlexModule }
+
     ],
   },
 
@@ -80,7 +83,8 @@ const appRoutes: Routes = [
     FinanceModule,
     StockModule,
     ReportModule,
-    UsermgtModule
+    UsermgtModule,
+    AlexModule
   ],
   providers: [AlertService,AuthenticationService,UserService],
   bootstrap: [AppComponent]
