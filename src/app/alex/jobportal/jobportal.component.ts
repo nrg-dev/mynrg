@@ -36,7 +36,7 @@ export class JobportalComponent implements OnInit {
       }
     }
 
-
+  
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -82,4 +82,9 @@ public openAsPDF(){
 //doc.setFontSize(26);
     doc.save('tableToPdf.pdf');
   }
+
+
+  bodyText: string;
+
+  
 }

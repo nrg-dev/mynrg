@@ -15,15 +15,6 @@ import { CustomMaterialModule } from "./core/material.module";
 import { LoginComponent } from './login/login.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { SalesModule } from './sales/sales.module';
-import { EmployeeModule } from './employee/employee.module';
-import { VendorcustomerModule } from './vendorcustomer/vendorcustomer.module';
-import { CategoryproductModule } from './categoryproduct/categoryproduct.module';
-import { PurchaseModule } from './purchase/purchase.module';
-import { FinanceModule } from './finance/finance.module';
-import { StockModule } from './stock/stock.module'; 
-import { UsermgtModule } from './usermgt/usermgt.module';
-import { ReportModule } from './report/report.module';
 //import { AlertComponent } from './_directives/index';
 import { AlertService, AuthenticationService,UserService } from './_services/index';
 import { AlexModule } from './alex/alex.module';
@@ -35,15 +26,6 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'Login Component' }},
   { path: 'landingpage', component: LandingpageComponent, data: { title: 'Landing Component' },
     children: [
-      { path: '', loadChildren: () => EmployeeModule },
-      { path: '', loadChildren: () => VendorcustomerModule },
-      { path: '', loadChildren: () => CategoryproductModule },
-      { path: '', loadChildren: () => PurchaseModule },
-      { path: '', loadChildren: () => SalesModule },
-      { path: '', loadChildren: () => FinanceModule },
-      { path: '', loadChildren: () => StockModule },
-      { path: '', loadChildren: () => ReportModule },
-      { path: '', loadChildren: () => UsermgtModule },
       { path: '', loadChildren: () => AlexModule }
 
     ],
@@ -75,15 +57,7 @@ const appRoutes: Routes = [
       { useHash: true , onSameUrlNavigation: 'reload'} // <-- debugging purposes only
     ),
     CustomMaterialModule,
-    EmployeeModule,
-    VendorcustomerModule,
-    CategoryproductModule,
-    PurchaseModule,
-    SalesModule,
-    FinanceModule,
-    StockModule,
-    ReportModule,
-    UsermgtModule,
+
     AlexModule
   ],
   providers: [AlertService,AuthenticationService,UserService],

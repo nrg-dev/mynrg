@@ -1,10 +1,14 @@
 <div style="height: 10%;"> <button  (click)="downloadAsPDF()">Export To PDF</button> &nbsp;
-    <button  (click)="downloadAsPDF()">Add New</button> &nbsp;
-    <button  (click)="downloadAsPDF()">Filter</button></div>
-   
+    <button  routerLink="/addjobportal">Add New</button> &nbsp;
+    <button  (click)="downloadAsPDF()">Filter</button> &nbsp;
+    <button (click)="openModal('custom-modal-1')">Open Modal 1</button>
+  </div>
+
+
+ 
    <div id="pdfTable" #pdfTable>
            <div class="col-lg-3"></div>
-           <div class="col-lg-9" >
+           <div class="col-lg-9" > 
            <div class="content-wrapper">
    <table class="table table-striped table-bordered table-sm" 
    cellspacing="0" width="60%"
@@ -18,7 +22,7 @@
                              <th>Phone</th>
                              <th>email</th>
                              <th>address</th>
-                             <th>name</th>
+                             <th>View</th>
                    
                            </tr>
                            </thead>
@@ -30,8 +34,9 @@
                              <td>{{ data.state }}</td>
                              <td>{{ data.Phone }}</td>
                              <td>{{ data.email }}</td>
-                             <td>{{ data.address }}</td>
-                             <td>{{ data.name }}</td>
+                             <td>   
+                             </td>
+                             <td><button  (click)="view()">View</button></td>
                            </tr>
                           </tbody>
                            
@@ -46,6 +51,8 @@
    
    </div>
    
+
+  
          
         <!-- <div> <button  (click)="openAsPDF()">Open To PDF</button></div> -->
    

@@ -5,17 +5,21 @@ import { ServerinfoComponent } from './serverinfo/serverinfo.component';
 
 import { Routes, RouterModule } from '@angular/router';
 import {DataTablesModule} from 'angular-datatables';
+import { AddjobportalComponent } from './addjobportal/addjobportal.component';
+import { ViewjobportalComponent } from './viewjobportal/viewjobportal.component';
 
 
 const routes: Routes = [
   { path: 'jobportal', component: JobportalComponent },
   { path: 'serverinfo', component: ServerinfoComponent },
+  { path: 'addjobportal', component: AddjobportalComponent },
+  { path: 'viewjobportal', component: ViewjobportalComponent },
 
 ];
 
 
 @NgModule({
-  declarations: [JobportalComponent, ServerinfoComponent],
+  declarations: [JobportalComponent, ServerinfoComponent, AddjobportalComponent, ViewjobportalComponent],
   imports: [
     CommonModule,
     DataTablesModule.forRoot(),
