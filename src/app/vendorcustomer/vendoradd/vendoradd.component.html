@@ -1,0 +1,689 @@
+<div  class="row">
+    <div class="col-md-3"></div>
+    <div  class="col-2 col-md-2  col-lg-5" ></div>
+
+    <button type="button"  class="btn btn-primary" (click)="addVendor()">Add Vendor</button>  &nbsp; &nbsp; &nbsp; 
+    <button type="button"  class="btn btn-primary" (click)="addCustomer()">Add Customer</button>  &nbsp; &nbsp; &nbsp; 
+
+</div>
+<br/>
+<div id="hole-divsize">
+<div class="row">
+    <div class="col-12 col-sm-5 col-md-6  col-lg-5">
+        <div class="tab">
+            <a class="tablink"  id="vendorstyle" (click)="vendorcust(1)">Vendor</a>
+            <a class="tablink" id="customerstyle" (click)="vendorcust(2)">Customer</a>
+        </div>
+
+<!--Vendor details start-->
+    <div id="purchase-div" *ngIf="vendordetailsstart">
+        <br/><br/><br/>                       
+        <div id="hole-div">
+                <hr style="margin: 0px;">
+                <div id="curs-pointer">
+                    <div *ngFor="let list of vendorList"  (click)="vendorDetails(list.vendorcode)" id="{{ list.vendorcode }}">          
+                        <h3 id="name-text">{{ list.vendorName }}</h3>
+                        <div class="row" id="details-text">
+                                <p id="country-text">country</p>
+                                <p id="text2">:</p>
+                                <p id="text1">{{ list.country }}</p>
+                        </div>
+                        <div class="row" id="addr-text">
+                                <p id="country-text">Address</p>
+                                <p id="text2">:</p>
+                                <p id="text1">{{ list.address }}</p>
+                        </div>
+                        <hr style="margin: 0px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+    
+<!--Vendor details end-->
+
+<!-- Customer details start-->
+  
+<div id="purchase-div" *ngIf="customerdetailsstart">
+	<br/><br/><br/>						
+	<div id="hole-div">
+			<hr style="margin: 0px;">
+			<div id="curs-pointer">
+				<div *ngFor="let list of custList"  (click)="customerDetails(list.custcode)" id="{{ list.custcode }}">          
+					<h3 id="name-text">{{ list.customerName }}</h3>
+					<div class="row" id="details-text">
+							<p id="country-text">country</p>
+							<p id="text2">:</p>
+							<p id="text1">{{ list.country }}</p>
+					</div>
+					<div class="row" id="addr-text">
+							<p id="country-text">Address</p>
+							<p id="text2">:</p>
+							<p id="text1">{{ list.address }}</p>
+					</div>
+					 <hr style="margin: 0px;">
+				 </div>
+			</div>
+	</div>
+</div>
+</div>
+<!-- Customer details end-->
+
+
+<div class="col-12 col-sm-7 col-md-6 col-lg-7">
+<!-- Vendor left side deatils start-->
+    <div *ngIf="vendordetails" id="vencustab">
+            <br/>
+            <div class="row">
+                <div class="col-md-1 col-1 col-lg-1"></div>
+                <div class="col-md-3 col-5 col-lg-4">
+                    <h4>Vendor View</h4>
+                </div>
+                    <div  class="col-md-5 col-5 col-lg-7">
+                     <div class="row">
+                        <button id="edit-butn1">
+                            <div class="row" (click)="vendoreditDetails()">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 5px;"></i>
+                                &nbsp;
+                                <p>Edit</p>
+                             </div>
+                         </button>
+    
+                         <button id="print-butn">
+                            <div class="row">
+                                <i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
+                                <p id="text">Print Page</p>
+                            </div>
+                         </button>
+                         <button id="print-butn">
+                            <div class="row" (click)="vendordelete()">
+                                <i class="fa fa-trash" aria-hidden="true" id="icon-mod"></i>
+                                <p id="text">Delete</p>
+                            </div>
+                         </button>
+                     </div>
+                    </div>
+                </div>
+                <hr style="margin-top: 25px;">
+
+                <div class="empdet-div" id="scrolling">
+                <div id="img-detaildiv">
+                    <div class="row">
+                        <img src="./assets/images/employee.png"  id="image-size"/>
+                        <div id="selecticon-dev">
+                            <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12" >
+                     <div class="col-2 col-sm-2 col-md-2 col-lg-2"></div>
+                   
+                        <div class="row" id="code">
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Vendor Code</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
+                            <p >{{ this.model.vendorcode }}</p>
+                        </div>
+                        <div class="row" id="name">
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Vendor Name</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
+                            <p  id="text4">{{ this.model.vendorName }}</p>
+                        </div>
+                        <div class="row" id="phonenumber">
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
+                            <p >{{ this.model.phoneNumber }}</p>
+                        </div>
+                        <div class="row" id="mobilenumber">
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
+                            <p >{{ this.model.mobileNumber }}</p>
+                        </div>
+                        <div class="row" id="country">
+                            <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                            <p class="col-md-1 col-1 col-lg-1">:</p>
+                            <p >{{ this.model.country }}</p>
+                        </div> 
+                   
+                    
+                        <div class="row" id="email">
+                                <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
+                                <p class="col-md-1 col-1 col-lg-1">:</p>
+                                <p  >{{ this.model.email }}</p>
+                        </div>
+                        <div class="row" id="city">
+                                <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                                <p class="col-md-1 col-1 col-lg-1">:</p>
+                                <p>{{ this.model.city }}</p>
+                        </div>
+                        <div class="row" id="lastedit">
+                                <p class="col-md-4 col-4 col-lg-4" id="text3">Last Edit</p>
+                                <p class="col-md-1 col-1 col-lg-1">:</p>
+                                <p>{{ this.model.lastedit }}</p>
+                        </div>
+                        <div class="row" id="addeddate">
+                                <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
+                                <p class="col-md-1 col-1 col-lg-1">:</p>
+                                <p>{{ this.model.addeddate }}</p>
+                        </div>
+                        <div class="row" id="address">
+                                <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                                <p class="col-md-1 col-1 col-lg-1">:</p>
+                                <p>{{ this.model.address }}</p>
+                        </div>
+                </div>
+                </div>
+        </div>
+ <!-- Vendor left side deatils end-->
+
+  <!-- Customer left side deatils start-->
+    <div *ngIf="customerdetails" id="vencustab">
+            <br/>
+            <div class="row">
+                <div class="col-md-1 col-1 col-lg-1"></div>
+                <div class="col-md-3 col-5 col-lg-4">
+                    <h4>Customer View</h4>
+                </div>
+                <div  class="col-md-5 col-5 col-lg-7">
+                    <div class="row">
+                    <button id="edit-butn1">
+                    <div class="row" (click)="customerEditDetails()">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 5px;"></i>
+                        &nbsp;
+                        <p>Edit</p>
+                    </div>
+                    </button>
+        
+                    <button id="print-butn">
+                    <div class="row">
+                        <i class="fa fa-print" aria-hidden="true" id="icon-mod"></i>
+                        <p id="text">Print Page</p>
+                    </div>
+                    </button>
+                    <button id="print-butn">
+                        <div class="row" (click)="customerdelete()">
+                            <i class="fa fa-trash" aria-hidden="true" id="icon-mod"></i>
+                            <p id="text">Delete</p>
+                        </div>
+                     </button>
+                    </div>
+                </div>
+            </div>
+            <hr style="margin-top: 25px;">
+
+        <div class="empdet-div" id="scrolling">
+            <div id="img-detaildiv">
+                <div class="row">
+                    <img src="./assets/images/employee.png"  id="image-size"/>
+                    <div id="selecticon-dev">
+                        <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-1 col-sm-1 col-md-1 col-lg-1"></div>
+            
+                <div class="row" id="code">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Code</p>
+                    <p class="col-md-1 col-1 col-lg-1">:</p>
+                    <p id="text4">{{ this.model.custcode }}</p>
+                </div>
+                
+                <div class="row" id="code">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Name</p>
+                    <p class="col-md-1 col-1 col-lg-1">:</p>
+                    <p id="text4">{{ this.model.customerName }}</p>
+                </div>
+                
+                <div class="row" id="number">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
+                    <p class="col-md-1 col-1 col-lg-1">:</p>
+                    <p id="text4">{{ this.model.phoneNumber }}</p>
+                </div>
+                
+                <div class="row" id="name">
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
+                        <p id="text4">{{ this.model.mobileNumber }}</p>
+                </div>
+                
+                <div class="row" id="country">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                    <p class="col-md-1 col-1 col-lg-1">:</p>
+                    <p id="text4">{{ this.model.country }}</p>
+                </div>
+
+            
+                <div class="row" id="country">
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
+                        <p id="text4">{{ this.model.email }}</p>
+                </div>
+                
+                <div class="row" id="city">
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
+                        <p id="text4">{{ this.model.city }}</p>
+                </div>
+                
+                <div class="row" id="lastedit">
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Last Edit</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
+                        <p id="text4">{{ this.model.lastedit }}</p>
+                </div>
+                
+                <div class="row" id="addeddate">
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
+                        <p id="text4">{{ this.model.addeddate }}</p>
+                </div>
+                
+                <div class="row" id="address">
+                        <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                        <p class="col-md-1 col-1 col-lg-1">:</p>
+                        <p id="text4">{{ this.model.address }}</p>
+                </div>     
+            
+            </div>
+        </div>
+    </div>
+ <!-- Customer left side deatils end-->
+<!--vendor Edit div start -->
+<div *ngIf="vendoreditdetails" id="vencustab"> 
+        <br/>
+        <div class="row">
+            <div class="col-md-1 col-1 col-lg-1"></div>
+            <div class="col-md-3 col-4 col-lg-4">
+                <h4>Vendor Edit</h4>
+            </div>
+                <div class="col-md-1 col-1 col-lg-1"></div>
+                <div  class="col-md-6 col-4 col-lg-6">
+                    <div class="row">
+                    <button id="edit-butn1">
+                        <div class="row" (click)="vendorupdateDetails()">
+                            <i class="fa fa-floppy-o" aria-hidden="true" style="margin-top: 5px;"></i>
+                            &nbsp;
+                            <p>Save</p>
+                          </div>
+                        </button>
+
+                        <button id="print-butn">
+                        <div class="row" (click)="vendorcloseMethod()">
+                            <i class="fa fa-times" aria-hidden="true" id="icon-mod"></i>
+                            <p id="text">Cancel</p>
+                        </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <hr style="margin-top: 25px;">
+
+        <div class="empdet-div" id="scrolling">
+            <div id="img-detaildiv">
+                <div class="row">
+                    <img src="./assets/images/employee.png"  id="image-size"/>
+                    <div id="selecticon-dev">
+                        <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-1 col-sm-1 col-md-1 col-lg-1"></div>
+                <div class="row" id="code">
+                    <p class="col-md-5 col-5 col-lg-4" id="text3">Vendor Code</p>
+                    <p class="col-md-1 col-1 col-lg-1">:</p>
+                    <p id="text4">{{ this.model.vendorcode }}</p>
+                </div>
+                
+                <div class="row" id="name">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Vendor Name</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.vendorName }}" />
+                </div>
+                
+                <div class="row" id="phonenumber">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.phoneNumber }}" />
+                </div>
+                    
+                <div class="row" id="mobilenumber">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.mobileNumber }}" />
+                </div>
+                
+                <div class="row" id="country">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <select id="editselect-box" [(ngModel)] ="this.model.country"  >
+                        <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
+                     </select>                 
+                </div>
+                
+                <div class="row" id="email">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.email }}" />
+                </div>
+                
+                <div class="row" id="city">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.city }}" />
+                </div>
+                
+                <div class="row" id="lastedit">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Last Edit</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <p id="text4">{{ this.model.lastedit }}</p>
+                </div>
+                
+                <div class="row" id="addeddate">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <p id="text4">{{ this.model.addeddate }}</p>
+                </div>
+                
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.address }}" />
+                </div>
+                
+             </div>
+        </div>
+    </div>
+<!--vendor Edit div End -->
+
+ <!--customer Edit div start -->
+ <div *ngIf="customereditdetails" id="vencustab">
+        <br/>
+        <div class="row">
+            <div class="col-md-1 col-1 col-lg-1"></div>
+            <div class="col-md-3 col-4 col-lg-4">
+                <h4>Customer Edit</h4>
+            </div>
+            <div class="col-md-1 col-1 col-lg-1"></div>
+            <div  class="col-md-6 col-4 col-lg-6">
+                <div class="row">
+                    <button id="edit-butn1">
+                        <div class="row" (click)="customerupdateDetails()">
+                            <i class="fa fa-floppy-o" aria-hidden="true" style="margin-top: 5px;"></i>
+                            &nbsp;
+                            <p>Save</p>
+                        </div>
+                    </button>
+
+                    <button id="print-butn">
+                    <div class="row" (click)="customercloseMethod()">
+                        <i class="fa fa-times" aria-hidden="true" id="icon-mod"></i>
+                        <p id="text">Cancel</p>
+                    </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <hr style="margin-top: 25px;">
+
+    <div class="empdet-div" id="scrolling">
+        <div id="img-detaildiv">
+            <div class="row">
+                <img src="./assets/images/employee.png"  id="image-size"/>
+                <div id="selecticon-dev">
+                    <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-md-1 col-1 col-lg-1"></div>
+                <div class="row" id="code">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Code</p>
+                    <p class="col-md-1 col-1 col-lg-1">:</p>
+                    <p>{{ this.model.custcode }}</p>
+                </div>
+                
+                <div class="row" id="name">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Name</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.customerName }}" />
+                </div>
+                    
+                <div class="row" id="phonenumber">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.phoneNumber }}" />
+                </div>
+                    
+                <div class="row" id="mobilenumber">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.mobileNumber }}" />
+                </div>
+                
+                <div class="row" id="country">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+
+                <select id="editselect-box" [(ngModel)] ="this.model.country"  >
+                        <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
+                    </select>
+                </div> 
+
+                <div class="row" id="email">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Email</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.email }}" />
+                </div>
+                
+                <div class="row" id="city">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.city }}" />
+                </div>
+                
+                <div class="row" id="lastedit">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Last Edit</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <p id="text4">{{ this.model.lastedit }}</p>
+                </div>
+                
+                <div class="row" id="addeddate">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Added Date</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <p id="text4">{{ this.model.addeddate }}</p>
+                </div>
+            
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="{{ this.model.address }}" />
+                </div>
+                    
+              </div>
+        </div>
+    </div>
+<!--customer Edit div End -->
+
+<!--vendor Drag and Drop start-->
+<div *ngIf="vendordragAndDrop" id="vencustab" cdkDrag>
+    <br/>
+    <div class="row">
+        <div class="col-md-1 col-1 col-lg-1"></div>
+        <div class="col-md-3 col-4 col-lg-4">
+            <h4>Add Vendor</h4>
+        </div>
+        <div class="col-md-1 col-1 col-lg-1"></div>
+        <div  class="col-md-6 col-4 col-lg-6">
+            <div class="row">
+                <button id="edit-butn1">
+                    <div class="row" (click)="vendorupdateDetails()">
+                        <i class="fa fa-floppy-o" aria-hidden="true" style="margin-top: 5px;"></i>
+                        &nbsp;
+                        <p>Save</p>
+                    </div>
+                </button>
+
+                <button id="print-butn">
+                <div class="row" (click)="vendordragdropcloseMethod()">
+                    <i class="fa fa-times" aria-hidden="true" id="icon-mod"></i>
+                    <p id="text">Cancel</p>
+                </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <hr style="margin-top: 25px;">
+
+    <div class="example-box" id="scrolling">
+        <div id="img-detaildiv">
+            <div class="row">
+                <img src="./assets/images/employee.png"  id="image-size"/>
+                <div id="selecticon-dev">
+                    <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+                </div>
+            </div>
+        </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Vendor Name</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="" />
+                </div>
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="" />
+                </div>
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="" />
+                </div>
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="" />
+                </div>
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">EmailAddress</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="" />
+                </div>
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <input type="text" id="editinput-box" value="" />
+                </div>
+                <div class="row" id="address">
+                    <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                    <p class="col-md-1 col-1 col-lg-1" >:</p>
+                    <select id="editselect-box" [(ngModel)] ="this.model.country">
+                        <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
+                    </select>  
+                </div>
+          </div>
+        </div>
+    </div>
+  <!-- vendor Drag and Drop end-->
+
+  <!--customer Drag and Drop start-->
+<div *ngIf="customerdragAndDrop" id="vencustab" cdkDrag>
+    <br/>
+    <div class="row">
+
+        <div class="col-md-1 col-1 col-lg-1"></div>
+        <div class="col-md-3 col-4 col-lg-4">
+            <h4>Add Customer</h4>
+        </div>
+        <div class="col-md-1 col-1 col-lg-1"></div>
+        <div  class="col-md-6 col-4 col-lg-6">
+            <div class="row">
+                <button id="edit-butn1">
+                    <div class="row" (click)="customerupdateDetails()">
+                        <i class="fa fa-floppy-o" aria-hidden="true" style="margin-top: 5px;"></i>
+                        &nbsp;
+                        <p>Save</p>
+                    </div>
+                </button>
+
+                <button id="print-butn">
+                <div class="row" (click)="customerdragdropclose()">
+                    <i class="fa fa-times" aria-hidden="true" id="icon-mod"></i>
+                    <p id="text">Cancel</p>
+                </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <hr style="margin-top: 25px;">
+
+    <div class="example-box" id="scrolling">
+    <div id="img-detaildiv">
+        <div class="row">
+            <img src="./assets/images/employee.png"  id="image-size"/>
+            <div id="selecticon-dev">
+                <i class="fa fa-camera" aria-hidden="true" id="camera-icon"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row" id="address">
+                <p class="col-md-4 col-4 col-lg-4" id="text3">Customer Name</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
+                <input type="text" id="editinput-box" value="" />
+            </div>
+            <div class="row" id="address">
+                <p class="col-md-4 col-4 col-lg-4" id="text3">Phone Number</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
+                <input type="text" id="editinput-box" value="" />
+            </div>
+            <div class="row" id="address">
+                <p class="col-md-4 col-4 col-lg-4" id="text3">Address</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
+                <input type="text" id="editinput-box" value="" />
+            </div>
+            <div class="row" id="address">
+                <p class="col-md-4 col-4 col-lg-4" id="text3">City</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
+                <input type="text" id="editinput-box" value="" />
+            </div>
+            <div class="row" id="address">
+                <p class="col-md-4 col-4 col-lg-4" id="text3">Email Address</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
+                <input type="text" id="editinput-box" value="" />
+            </div>
+            <div class="row" id="address">
+                <p class="col-md-4 col-4 col-lg-4" id="text3">Mobile Number</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
+                <input type="text" id="editinput-box" value="" />
+            </div>
+            <div class="row" id="address">
+                <p class="col-md-4 col-4 col-lg-4" id="text3">Country</p>
+                <p class="col-md-1 col-1 col-lg-1" >:</p>
+                <select id="editselect-box" [(ngModel)] ="this.model.country"  >
+                    <option  *ngFor="let country of countryList" value={{country}} id="black-color">{{country}}</option>     
+                 </select>  
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- customer Drag and Drop end-->
+
+    </div>            
+</div>
+</div>
+
+<!--Dialouge box start-->
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':successdialog}" style="margin-top:9%;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div id="box-dialouge"><i class="fa fa-check" aria-hidden="true" id="icon-font"></i></div>
+          <br/><br/>
+          <h2 style="text-align: center;color: black;">{{mainmessage}}</h2>
+          <br/><br/>
+         <!-- <p id="p-text">{{message}}.</p> -->
+      </div>
+    </div>
+  </div>
+  <!--Dialouge box end-->
+
