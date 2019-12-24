@@ -4,7 +4,10 @@ import * as jsPDF from 'jspdf';
 import { DataTablesModule } from 'angular-datatables';
 import * as jQuery from 'jquery';
 import { User } from 'src/app/_models';
- 
+import { Subject } from 'rxjs';
+//import  *  as  country  from  'country.json';
+//import * as country from './country.json';
+
 
 @Component({
   selector: 'app-jobportal',
@@ -16,12 +19,29 @@ export class JobportalComponent implements OnInit {
   user:User;
   view= true
   add=false
+  portalview="none";
   dataList : any = [];
-  constructor() { }
+  //countryList: any;
+
+  //countryList: any = (country as any).default;
+ 
+
+  countryList:any;
+  constructor() { 
+
+    //alert(this.countryList["country"]);
+
+  }
 
   dtOptions: DataTables.Settings = {};
-  ngOnInit() {
 
+ 
+
+  ngOnInit() {
+    const country = require("../../country.json");
+    this.countryList=country;
+   
+   
     for (let i = 0; i < 50; i++) {
       console.log ("Block statement execution no." + i);
       
@@ -58,6 +78,9 @@ public openAsPDF(){
   alert("open pdf");
   
 }
+public viewData(){
+  this.portalview='block';
+}
 public addNew(){
   this.view= false
   this.add= true  
@@ -77,7 +100,7 @@ public addNew(){
 }
 
 public save(){
-  alert("save ");
+  alert("Successfully Saved ");
 
 }
 

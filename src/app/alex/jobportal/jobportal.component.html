@@ -57,7 +57,7 @@
            <div class="col-lg-9" > 
            <div class="content-wrapper">
    <table class="table table-striped table-bordered table-sm" 
-   cellspacing="0" width="60%"
+   cellspacing="0" width="90%"
                    datatable [dtOptions]="dtOptions">
                                    <thead>
                            <tr>
@@ -82,7 +82,7 @@
                              <td>{{ data.email }}</td>
                              <td>   
                              </td>
-                             <td><button  (click)="view()">View</button></td>
+                             <td><button  (click)="viewData()">View</button></td>
                            </tr>
                           </tbody>
                            
@@ -112,20 +112,33 @@
   <form name="form"  class="modal-content" (ngSubmit)=" save()">
     <div class="container">
 
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
+      <label for="email"><b>PORTAL_NAME</b></label>
+      <input type="text" placeholder="PORTAL_NAME" name="email" required>
     
 
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
+      <label for="email"><b>COUNTRY</b></label>
+
+      <select placeholder="Enter Country" id="country" name="country">
+        <option *ngFor="let list of countryList" value="{{list.name}}">{{list.name}}</option>
+
+      </select>
+
     
  
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
+      <label for="email"><b>URL</b></label>
+      <input type="text" placeholder="Enter URL" name="email" required>
+      
+      <label for="email"><b>USER_NAME</b></label>
+      <input type="text" placeholder="Enter USER_NAME" name="email" required>
+     
+      <label for="email"><b>PASSWORD</b></label>
+      <input type="text" placeholder="Enter PASSWORD" name="email" required>
     
- 
- 
-    
+      
+      <label for="email"><b>Notes</b></label>
+
+      <textarea id="notes" name="notes" placeholder="Write something.." ></textarea>
+
    
    
       <button type="submit"  value="Save"> Save </button>
@@ -135,8 +148,21 @@
   </div>
   </form>
 </div>
-  
+</div>
      
+
+
+
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':portalview}" style="margin-top:9%;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div id="box-dialouge"><i class="fa fa-check" aria-hidden="true" id="icon-font"></i></div>
+        <br/><br/>
+        <h4 style="text-align: center;color: black;">Hello...</h4>
+        <br/><br/>
+    </div>
+  </div>
+</div>
 
 
         <!-- <div> <button  (click)="openAsPDF()">Open To PDF</button></div> -->
