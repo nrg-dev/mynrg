@@ -3,6 +3,7 @@ import {  ViewChild, ElementRef } from '@angular/core';
 import * as jsPDF from 'jspdf';
 import { DataTablesModule } from 'angular-datatables';
 import * as jQuery from 'jquery';
+import { User } from 'src/app/_models';
  
 
 @Component({
@@ -11,13 +12,16 @@ import * as jQuery from 'jquery';
   styleUrls: ['./jobportal.component.css']
 })
 export class JobportalComponent implements OnInit {
-
+  model: any = {};
+  user:User;
+  view= true
+  add=false
   dataList : any = [];
   constructor() { }
 
   dtOptions: DataTables.Settings = {};
   ngOnInit() {
-    
+
     for (let i = 0; i < 50; i++) {
       console.log ("Block statement execution no." + i);
       
@@ -42,6 +46,9 @@ export class JobportalComponent implements OnInit {
       pageLength: 5,
       processing: true
     }
+
+        //document.getElementById('id01').style.display='none';
+
   }
 
   @ViewChild('pdfTable', {static: false}) pdfTable: ElementRef;
@@ -50,6 +57,34 @@ export class JobportalComponent implements OnInit {
 public openAsPDF(){
   alert("open pdf");
   
+}
+public addNew(){
+  this.view= false
+  this.add= true  
+ /* document.getElementById('data').style.display='none';
+  document.getElementById('id01').style.display='block';
+  var modal = document.getElementById('id01');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    document.getElementById('data').style.display='block';
+    if (event.target == modal) {
+      modal.style.display = "none";
+      document.getElementById('data').style.display='block';
+
+    }
+  }*/
+}
+
+public save(){
+  alert("save ");
+
+}
+
+public back(){
+  this.view= true
+  this.add= false  
+
 }
   public downloadAsPDF() {
     const doc = new jsPDF();

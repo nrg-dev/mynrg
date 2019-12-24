@@ -20,8 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
    //document.getElementById('id01').style.display='block'";
    //document.getElementById('id01').style.display='block';
-
-   
+  
     this.model.currentusername='';
     this.model.currentpassword='';
   }

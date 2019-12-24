@@ -7,8 +7,6 @@ import { HttpClientModule } from'@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
-import { SecondComponent } from './second/second.component';
-import { FirstComponent } from './first/first.component';
 import { RouterModule, Routes } from "@angular/router";
 import { CustomMaterialModule } from "./core/material.module";
 
@@ -37,8 +35,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     NavigationComponent,
-    SecondComponent,
-    FirstComponent,
     LoginComponent,
     LandingpageComponent,   
     DashboardComponent,
@@ -47,9 +43,9 @@ const appRoutes: Routes = [
 
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
     RouterModule.forRoot(

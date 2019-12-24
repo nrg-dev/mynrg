@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {DataTablesModule} from 'angular-datatables';
 import { AddjobportalComponent } from './addjobportal/addjobportal.component';
 import { ViewjobportalComponent } from './viewjobportal/viewjobportal.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -22,6 +23,8 @@ const routes: Routes = [
   declarations: [JobportalComponent, ServerinfoComponent, AddjobportalComponent, ViewjobportalComponent],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     DataTablesModule.forRoot(),
     RouterModule.forChild(routes) 
   ]
