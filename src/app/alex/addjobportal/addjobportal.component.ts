@@ -49,7 +49,7 @@ export class AddjobportalComponent implements OnInit {
                     
                   },
                   error => {
-                    alert("error ");
+                    alert("Server error...");
   
                      // this.otherErrordialog = 'block';
                      // this.loading = false;

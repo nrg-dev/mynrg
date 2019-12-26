@@ -12,7 +12,7 @@
 <div style="height: 10%;"> <button  (click)="downloadAsPDF()" style="width:auto;"> PDF</button> &nbsp;
    <!-- <button  (click)="addNew()" style="width:auto;">Add New</button> -->&nbsp; 
 
-    <button  (click)="openDialog()" style="width:auto;">ADD</button>
+    <button  (click)="openDialogForAdd()" style="width:auto;">ADD</button>
     &nbsp;&nbsp;
     <button  (click)="downloadAsPDF()" style="width:auto;">Filter</button> &nbsp;
   </div>
@@ -47,7 +47,7 @@
                              <td>{{ data.password }}</td>
                              <td>{{ data.phonenumber }}</td>
                             <td>
-                              <button  (click)="viewData()">view/edit/delete</button>
+                              <button  (click)="viewData(data.id)">view/edit/delete</button>
 
                             </td>
                            </tr>

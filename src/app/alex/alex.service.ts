@@ -24,8 +24,15 @@ myPortalReg(portal: Portal){
     return this.http.post<Portal>(this.commonURL+'myPortalReg',portal);
 }
 
+// Load all the data
 myPortaltable(){
     return this.http.get(this.commonURL+'myPortaltable');
 }
 
+// get only one data
+myPortalview(id:number){
+    return this.http.get<Portal>(this.commonURL+'myPortalview?id='+id);
+  //  return this.http.get(this.commonURL+'getMyReservationDetails?primaryKeyStr='+primaryKeyStr);
+
+}
 }

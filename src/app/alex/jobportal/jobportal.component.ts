@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AlexService } from '../alex.service';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { AddjobportalComponent } from '../addjobportal/addjobportal.component';
+import { ViewjobportalComponent } from '../viewjobportal/viewjobportal.component';
 
 
 @Component({
@@ -96,7 +97,7 @@ public openAsPDF(){
 }
 
 
-openDialog() {
+openDialogForAdd() {
 
 
   this.dialogConfig.disableClose = true;
@@ -108,21 +109,40 @@ openDialog() {
   //this.dialog.open(AddjobportalComponent, this.dialogConfig);
 
   this.dialog.open(AddjobportalComponent,{
-    height: '80%'
+    data: {dialogTitle: "hello", dialogText: "text"},
+    height: '80%',
+
+    
   });
 
 }
 onSubmit() {
   this.submitted = false;
 }
-public viewData(){
-  this.portalview='block';
+public viewData(id:number){
+  //this.portalview='block';
+console.log("JobportalComponent Id--->"+id);
+  this.dialogConfig.disableClose = true;
+  this.dialogConfig.autoFocus = true;
+  this.dialogConfig.position = {
+    'top': '1000',
+    left: '100'
+  };
+  //this.dialog.open(AddjobportalComponent, this.dialogConfig);
+
+  this.dialog.open(ViewjobportalComponent,{
+  //  data: {dialogTitle: "hello", dialogText: "text"},
+    data: id,
+    height: '80%'
+  });
+
+
 }
 public addNew(){
   this.view= 'none';
   this.add= true  
  }
-
+/*
  myPortalReg(){
   this.model.currentUser=localStorage.getItem('currentusername');
   console.log('............controller myPortalReg....');
@@ -149,15 +169,13 @@ public addNew(){
                 });
 
 }
-
-public back(){
+*/
+/*public back(){
   this.view= 'block';
   this.add= false  
+ 
+}*/
 
-
-
-  
-}
   public downloadAsPDF() {
     const doc = new jsPDF();
 

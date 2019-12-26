@@ -2,6 +2,8 @@
 
 export class Portal extends Common {
 
+   id:number;
+   portalId:number;
    portalname: string; 
    country: string;
    url: string;
