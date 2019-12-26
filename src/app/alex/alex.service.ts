@@ -1,11 +1,13 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User, Portal } from '../_models/index';
-import { ServerURL } from './url';
+import { Portal } from '../_models';
+//mport { User, Portal } from '../../_models/index';
+//import { ServerURL } from './url';
+//import { Portal } from '../_models';
 
 
 @Injectable()
-export class UserService {    
+export class AlexService {    
     suburl:string;
    // private commonURL = this.globalsURL.serverURL;
     private commonURL = 'http://localhost:8093/mynrg-server/';
@@ -22,5 +24,8 @@ myPortalReg(portal: Portal){
     return this.http.post<Portal>(this.commonURL+'myPortalReg',portal);
 }
 
+myPortaltable(){
+    return this.http.get(this.commonURL+'myPortaltable');
+}
 
 }

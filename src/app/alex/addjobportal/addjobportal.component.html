@@ -1,1 +1,52 @@
-<p>addjobportal works!</p>
+
+<div class="container">
+
+    <h1>Register</h1>
+    <p>Please fill in this form to create an job portal.</p>
+    <hr>
+    <form name="form"  class="modal-content" (ngSubmit)=" myPortalReg()">
+      <div class="container">
+  
+        <label for="portalname"><b>PORTAL_NAME</b></label>
+        <input type="text" [(ngModel)]="model.portalname" #portalname="ngModel" placeholder="PORTAL_NAME" name="portalname" required>
+      
+  
+        <label for="email"><b>COUNTRY</b></label>
+  
+        <select placeholder="Enter Country" [(ngModel)]="model.country" #country="ngModel" id="country" name="country">
+          <option *ngFor="let list of countryList" value="{{list.name}}">{{list.name}}</option>
+  
+        </select>
+  
+      
+   
+        <label for="url"><b>URL</b></label>
+        <input type="text" [(ngModel)]="model.url" #url="ngModel" placeholder="Enter URL" name="url" required>
+        
+        <label for="username"><b>USER_NAME</b></label>
+        <input type="text" [(ngModel)]="model.username" #username="ngModel" placeholder="Enter USER_NAME" name="username" required>
+       
+        <label for="password"><b>PASSWORD</b></label>
+        <input type="text" [(ngModel)]="model.password" #password="ngModel" placeholder="Enter PASSWORD" name="password" required>
+      
+        
+        <label for="email"><b>Notes</b></label>
+  
+        <textarea id="notes" name="notes" placeholder="Write something.." ></textarea>
+  
+     
+     
+        <button type="submit"  value="Save"> Save </button>
+             
+          <button class="mat-raised-button"(click)="close()">Close</button>
+
+    </div>
+    </form>
+  </div>
+  <!--
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>
+
+-->

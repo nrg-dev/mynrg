@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import {  ViewChild, ElementRef } from '@angular/core';
 import * as jsPDF from 'jspdf';
-import { DataTablesModule } from 'angular-datatables';
+import { DataTablesModule, DataTableDirective } from 'angular-datatables';
 import * as jQuery from 'jquery';
-import { User } from 'src/app/_models';
+//import { User, Portal } from '../../_models';
 import { Subject } from 'rxjs';
+import { AlertService, UserService } from '../../_services';
+import { Router } from '@angular/router';
+import { Portal } from 'src/app/_models';
 //import  *  as  country  from  'country.json';
 //import * as country from './country.json';
+import { HttpClientModule } from '@angular/common/http'; 
+import { AlexService } from '../alex.service';
+import {MatDialog, MatDialogConfig} from "@angular/material";
+import { AddjobportalComponent } from '../addjobportal/addjobportal.component';
 
 
 @Component({
@@ -15,62 +22,72 @@ import { Subject } from 'rxjs';
   styleUrls: ['./jobportal.component.css']
 })
 export class JobportalComponent implements OnInit {
+  
+  @ViewChild(DataTableDirective, { static: true }) datatableElement: DataTableDirective;
+  dtElement: DataTableDirective;
+  dtOptions: DataTables.Settings = { };
+  dtInstance: DataTables.Api;
+  dtTrigger: Subject<any> = new Subject();
+  dt_data: any = {};
+  //dtOptions: DataTables.Settings = { };
+  submitted=false;
   model: any = {};
-  user:User;
-  view= true
-  add=false
+  portal:Portal;
+  view= 'block';
+  public add=false
   portalview="none";
-  dataList : any = [];
+  public dataList : any;
   //countryList: any;
 
   //countryList: any = (country as any).default;
- 
+  dialogConfig = new MatDialogConfig();
+
+  isDtInitialized:boolean = false
+
 
   countryList:any;
-  constructor() { 
-
-    //alert(this.countryList["country"]);
-
+  constructor( private router: Router,
+    private alexService: AlexService,
+    private dialog: MatDialog,
+    ) { 
+      
+    
   }
 
-  dtOptions: DataTables.Settings = {};
+
+  myEventSubscription: any;
+
+  ngOnInit() {
+    this.dataList = null;
+    console.log("ngOnInit......");
+    const country = require("../../country.json");
+    this.countryList=country;
+  
+  this.dtOptions = {
+    pagingType: 'full_numbers',
+    pageLength: 5,
+    processing: true
+  };
+ this.myEventSubscription=this.alexService.myPortaltable()
+    .subscribe(
+        data => {
+          this.view= 'block';
+          this.add= false;
+            this.dataList = data;
+            this.dtTrigger.next();
+       },
+        error => {
+            alert('Error !!!!');
+        }
+    );
+  //  this.dtTrigger.next();
+
+   
+  }
 
  
 
-  ngOnInit() {
-    const country = require("../../country.json");
-    this.countryList=country;
-   
-   
-    for (let i = 0; i < 50; i++) {
-      console.log ("Block statement execution no." + i);
-      
-     
-      this.dataList[i] = 
-      { 
-      Company:'CUST001',
-      Contact :' WIROTO CRAFT',
-      Country : '+62 878-2277-7490',
-      state : '+62 675-777-8998',
-      Phone : 'No 2, Main Street,Jakarta,Indonesia',
-      email :  'Indonesia',
-      address : 'Jakarta',
-      name : 'nrgadmin@neotural.com',
-      status : 'active',
-      }
-    }
-
   
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      processing: true
-    }
-
-        //document.getElementById('id01').style.display='none';
-
-  }
-
   @ViewChild('pdfTable', {static: false}) pdfTable: ElementRef;
 
 
@@ -78,36 +95,69 @@ public openAsPDF(){
   alert("open pdf");
   
 }
+
+
+openDialog() {
+
+
+  this.dialogConfig.disableClose = true;
+  this.dialogConfig.autoFocus = true;
+  this.dialogConfig.position = {
+    'top': '1000',
+    left: '100'
+  };
+  //this.dialog.open(AddjobportalComponent, this.dialogConfig);
+
+  this.dialog.open(AddjobportalComponent,{
+    height: '80%'
+  });
+
+}
+onSubmit() {
+  this.submitted = false;
+}
 public viewData(){
   this.portalview='block';
 }
 public addNew(){
-  this.view= false
+  this.view= 'none';
   this.add= true  
- /* document.getElementById('data').style.display='none';
-  document.getElementById('id01').style.display='block';
-  var modal = document.getElementById('id01');
+ }
 
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    document.getElementById('data').style.display='block';
-    if (event.target == modal) {
-      modal.style.display = "none";
-      document.getElementById('data').style.display='block';
+ myPortalReg(){
+  this.model.currentUser=localStorage.getItem('currentusername');
+  console.log('............controller myPortalReg....');
+  this.alexService.myPortalReg(this.model)
+            .subscribe(
+                data => {
+                //   this.portal=data;
+                    console.log('return value -->'+data);
+                    alert("Successfully Saved ");
+                    this.model.portalname=null;
+                  //  if(this.portal.status=="success") {
+                        console.log('If User Exits');
+                     //   this.userExsistdialog = 'block';
+                     //   this.loading = false;
+                 //   }
 
-    }
-  }*/
-}
+                  
+                },
+                error => {
+                  alert("error ");
 
-public save(){
-  alert("Successfully Saved ");
+                   // this.otherErrordialog = 'block';
+                   // this.loading = false;
+                });
 
 }
 
 public back(){
-  this.view= true
+  this.view= 'block';
   this.add= false  
 
+
+
+  
 }
   public downloadAsPDF() {
     const doc = new jsPDF();

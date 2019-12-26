@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 
 @Component({
   selector: 'app-addjobportal',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddjobportalComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+
+    private dialogRef: MatDialogRef<AddjobportalComponent>,
+  ) { }
 
   ngOnInit() {
   }
 
+  close() {
+   // alert("close called...");
+    this.dialogRef.close();
+  }
+
+  myPortalReg() {
+    //this.dialogRef.close(this.form.value);
+
+    this.dialogRef.close();
+}
 }
