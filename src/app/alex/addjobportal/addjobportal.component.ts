@@ -30,6 +30,7 @@ export class AddjobportalComponent implements OnInit {
   }
 
   myPortalReg() {
+    this.model.createdPerson=localStorage.getItem("currentusername");
     //this.dialogRef.close(this.form.value);
     this.model.currentUser=localStorage.getItem('currentusername');
     console.log('............controller myPortalReg....');

@@ -53,4 +53,32 @@ export class ViewjobportalComponent implements OnInit {
      this.dialogRef.close();
    }
 
+
+   editRemove(value:string) {
+     if(value=="PUT"){
+      alert(" PUT ID --->"+value);
+
+     }
+     if(value=="DELETE"){
+
+     // alert(" delete ID --->"+value);
+      console.log("Portal ID --->"+this.model.portalId);
+      this.alexService.myPortaldelete(this.model.portalId)
+      .subscribe(
+          data => {
+            //  this.model = data;
+             // console.log("portal Id-->"+this.model.portalId);
+             // console.log("portal name-->"+this.model.portalName);
+            // alert(data);
+              
+          },
+          error => {
+              alert('Error !!!!');
+          }
+      );
+ 
+
+     }
+     this.dialogRef.close();
+   }
 }

@@ -32,7 +32,12 @@ myPortaltable(){
 // get only one data
 myPortalview(id:number){
     return this.http.get<Portal>(this.commonURL+'myPortalview?id='+id);
-  //  return this.http.get(this.commonURL+'getMyReservationDetails?primaryKeyStr='+primaryKeyStr);
-
 }
+
+// Remove portal
+
+myPortaldelete(id:number){
+    return this.http.delete<String>(this.commonURL+'myPortaldelete?id='+id);
+}
+
 }

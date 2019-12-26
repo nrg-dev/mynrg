@@ -13,4 +13,5 @@ export class Portal extends Common {
    phonenumber:string;
    currentUser:string;
    status:string;
+   createdPerson:string;
 }

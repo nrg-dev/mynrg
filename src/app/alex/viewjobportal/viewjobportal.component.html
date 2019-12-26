@@ -2,7 +2,7 @@
 <div class="container">
 
     <h1> Modify / Remove </h1>
-    <form name="form"  class="modal-content" (ngSubmit)=" editRemove()">
+    <form name="form"  class="modal-content">
       <div class="container">
   
         <label for="portalname"><b>PORTAL_NAME</b></label>
@@ -34,8 +34,8 @@
   
      
      
-        <button type="submit"  value="Save"> Update </button>
-        <button type="submit"  value="Save"> Delete </button>
+        <button type="submit" (click)="editRemove('PUT')" value="Save"> Update </button>
+        <button type="submit"  (click)="editRemove('DELETE')"> Delete </button>
 
           <button class="mat-raised-button"(click)="close()">Close</button>
 
