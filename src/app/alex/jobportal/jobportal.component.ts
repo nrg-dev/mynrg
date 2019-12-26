@@ -45,8 +45,8 @@ export class JobportalComponent implements OnInit {
   isDtInitialized:boolean = false
 
 
-  countryList:any;
-  constructor( private router: Router,
+  constructor( 
+    private router: Router,
     private alexService: AlexService,
     private dialog: MatDialog,
     ) { 
@@ -60,8 +60,7 @@ export class JobportalComponent implements OnInit {
   ngOnInit() {
     this.dataList = null;
     console.log("ngOnInit......");
-    const country = require("../../country.json");
-    this.countryList=country;
+  
   
   this.dtOptions = {
     pagingType: 'full_numbers',
