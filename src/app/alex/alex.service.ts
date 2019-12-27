@@ -34,6 +34,13 @@ myPortalview(id:number){
     return this.http.get<Portal>(this.commonURL+'myPortalview?id='+id);
 }
 
+// Update portal
+
+myPortalupdate(portal: Portal){
+    return this.http.put<String>(this.commonURL+'myPortalupdate',portal);
+
+}
+
 // Remove portal
 
 myPortaldelete(id:number){

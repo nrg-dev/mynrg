@@ -4,13 +4,17 @@ export class Portal extends Common {
 
    id:number;
    portalId:number;
-   portalname: string; 
+   portalName: string; 
    country: string;
    url: string;
-   emailID: string;
-   username: string;
+   emailID: string; // need to remove
+   emailId1:string;
+   emailId2:string;
+   phoneNumber1:string;
+   phoneNumber2:string;
+   userName: string;
    password:string;
-   phonenumber:string;
+   phonenumber:string; // need to remove
    currentUser:string;
    status:string;
    createdPerson:string;

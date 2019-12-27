@@ -5,8 +5,8 @@
     <form name="form"  class="modal-content">
       <div class="container">
   
-        <label for="portalname"><b>PORTAL_NAME</b></label>
-        <input type="text" [(ngModel)]="model.portalname" #portalname="ngModel" placeholder="PORTAL_NAME" name="portalname" required>
+        <label for="portalName"><b>PORTAL_NAME</b></label>
+        <input type="text" [(ngModel)]="model.portalName" #portalName="ngModel" name="portalName" required>
       
   
         <label for="email"><b>COUNTRY</b></label>
@@ -19,14 +19,33 @@
       
    
         <label for="url"><b>URL</b></label>
-        <input type="text" [(ngModel)]="model.url" #url="ngModel" placeholder="Enter URL" name="url" required>
+        <textarea [(ngModel)]="model.url" #url="ngModel"  name="url" required> </textarea>
         
-        <label for="username"><b>USER_NAME</b></label>
-        <input type="text" [(ngModel)]="model.username" #username="ngModel" placeholder="Enter USER_NAME" name="username" required>
+        <label for="userName"><b>USER_NAME</b></label>
+        <input type="text" [(ngModel)]="model.userName" #userName="ngModel"  name="userName" required>
        
         <label for="password"><b>PASSWORD</b></label>
-        <input type="text" [(ngModel)]="model.password" #password="ngModel" placeholder="Enter PASSWORD" name="password" required>
+        <input type="text" [(ngModel)]="model.password" #password="ngModel"  name="password" required>
       
+
+        <label for="emailId1"><b>Email 1</b></label>
+        <input type="text" [(ngModel)]="model.emailId1" #emailId1="ngModel" name="emailId1" required>
+       
+
+        <label for="emailId2"><b>Email 2</b></label>
+        <input type="text" [(ngModel)]="model.emailId2" #emailId2="ngModel" name="emailId2" required>
+       
+        <label for="phoneNumber1"><b>Phone Number 1</b></label>
+        <input type="text" [(ngModel)]="model.phoneNumber1" #phoneNumber1="ngModel" name="phoneNumber1" required>
+       
+
+        <label for="phoneNumber2"><b>Phone Number 2</b></label>
+        <input type="text" [(ngModel)]="model.phoneNumber2" #phoneNumber2="ngModel" name="phoneNumber2" required>
+       
+        <label for="updatedDate"><b>Updated Date</b></label>
+        <input type="text" [(ngModel)]="model.updatedDate" #updatedDate="ngModel" name="updatedDate" required>
+       
+
         
         <label for="email"><b>Notes</b></label>
   
@@ -34,10 +53,10 @@
   
      
      
-        <button type="submit" (click)="editRemove('PUT')" value="Save"> Update </button>
-        <button type="submit"  (click)="editRemove('DELETE')"> Delete </button>
+        <button type="submit" id="btnupdate" (click)="editRemove('PUT')" value="Save"> Update </button>
+        <button type="submit" id="btndel" (click)="editRemove('DELETE')"> Delete </button>
 
-          <button class="mat-raised-button"(click)="close()">Close</button>
+          <button id="btnclose" class="mat-raised-button"(click)="close()">Close</button>
 
     </div>
     </form>

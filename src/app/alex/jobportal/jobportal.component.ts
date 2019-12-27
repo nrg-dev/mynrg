@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {  ViewChild, ElementRef } from '@angular/core';
+
 import * as jsPDF from 'jspdf';
 import { DataTablesModule, DataTableDirective } from 'angular-datatables';
 import * as jQuery from 'jquery';
@@ -15,6 +14,8 @@ import { AlexService } from '../alex.service';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { AddjobportalComponent } from '../addjobportal/addjobportal.component';
 import { ViewjobportalComponent } from '../viewjobportal/viewjobportal.component';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 
 @Component({
@@ -23,18 +24,16 @@ import { ViewjobportalComponent } from '../viewjobportal/viewjobportal.component
   styleUrls: ['./jobportal.component.css']
 })
 export class JobportalComponent implements OnInit {
-  
-  @ViewChild(DataTableDirective, { static: true }) datatableElement: DataTableDirective;
-  dtElement: DataTableDirective;
-  dtOptions: DataTables.Settings = { };
-  dtInstance: DataTables.Api;
-  dtTrigger: Subject<any> = new Subject();
-  dt_data: any = {};
-  //dtOptions: DataTables.Settings = { };
-  submitted=false;
+  displayedColumns: string[] = ['portalName', 'username', 'password','phonenumber','email','action'];
+  dataSource: MatTableDataSource<any>;
+
+  @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort,{ static: true }) sort: MatSort;
+  @ViewChild('pdfTable', {static: false}) pdfTable: ElementRef;
+
+
   model: any = {};
   portal:Portal;
-  view= 'block';
   public add=false
   portalview="none";
   public dataList : any;
@@ -51,44 +50,74 @@ export class JobportalComponent implements OnInit {
     private alexService: AlexService,
     private dialog: MatDialog,
     ) { 
-      
-    
+
+      this.alexService.myPortaltable()
+      .subscribe(
+          data => {
+  
+              this.dataList = data;
+              this.dataSource = new MatTableDataSource(this.dataList);
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+              console.log("ngOnInit......4");
+  
+              //this.dtTrigger.next();
+              console.log("ngOnInit......5");
+  
+         },
+          error => {
+              alert('Error !!!!');
+          }
+      );
+
+
   }
 
 
   myEventSubscription: any;
 
   ngOnInit() {
-    this.dataList = null;
-    console.log("ngOnInit......");
-  
-  
-  this.dtOptions = {
-    pagingType: 'full_numbers',
-    pageLength: 5,
-    processing: true
-  };
- this.myEventSubscription=this.alexService.myPortaltable()
-    .subscribe(
-        data => {
-          this.view= 'block';
-          this.add= false;
-            this.dataList = data;
-            this.dtTrigger.next();
-       },
-        error => {
-            alert('Error !!!!');
-        }
-    );
-  //  this.dtTrigger.next();
+  //  this.dataSource.paginator = this.paginator;
+   // this.dataSource.sort = this.sort;
 
    
   }
 
- 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  refresh() {
+    console.log("before calling...ngOnInit......"); 
+    //this.router.navigate(['/landingpage']);
+    this.alexService.myPortaltable()
+      .subscribe(
+          data => {
+  
+              this.dataList = data;
+              this.dataSource = new MatTableDataSource(this.dataList);
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+              console.log("ngOnInit......4");
+  
+              //this.dtTrigger.next();
+              console.log("ngOnInit......5");
+  
+         },
+          error => {
+              alert('Error !!!!');
+          }
+      );
+    //this.router.isActive;
+    console.log("after calling ngOnInit......");
+
+  }
 
   
-  @ViewChild('pdfTable', {static: false}) pdfTable: ElementRef;
 
 
 public openAsPDF(){
@@ -98,8 +127,6 @@ public openAsPDF(){
 
 
 openDialogForAdd() {
-
-
   this.dialogConfig.disableClose = true;
   this.dialogConfig.autoFocus = true;
   this.dialogConfig.position = {
@@ -109,17 +136,22 @@ openDialogForAdd() {
   //this.dialog.open(AddjobportalComponent, this.dialogConfig);
 
   this.dialog.open(AddjobportalComponent,{
-    data: {dialogTitle: "hello", dialogText: "text"},
-    height: '80%',
-
-    
+   // data: {dialogTitle: "hello", dialogText: "text"},
+    height: '80%', 
   });
+  //.afterClosed().subscribe(result => {
+   // this.refresh();
+  //});
+  
+  //;
+ // this.refresh();
 
 }
 onSubmit() {
-  this.submitted = false;
 }
 public viewData(id:number){
+
+
   //this.portalview='block';
 console.log("JobportalComponent Id--->"+id);
   this.dialogConfig.disableClose = true;
@@ -134,12 +166,17 @@ console.log("JobportalComponent Id--->"+id);
   //  data: {dialogTitle: "hello", dialogText: "text"},
     data: id,
     height: '80%'
-  });
+  }).afterClosed().subscribe(result => {
+   this.refresh();
 
+   });;
+  
+  //console.log("before calling refresh...");
+  //this.refresh();
+  //console.log("after calling refresh...");
 
 }
 public addNew(){
-  this.view= 'none';
   this.add= true  
  }
 /*
