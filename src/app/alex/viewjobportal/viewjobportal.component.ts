@@ -37,15 +37,17 @@ export class ViewjobportalComponent implements OnInit {
              alert('Error !!!!');
          }
      );
+     //this.dialogRef.close(this.data);
 
      // this.dialogTitle = this.data.dialogTitle;
     //this.dialogText = this.data.dialogText;
 
      }
-
+public countryList;
   ngOnInit() {
     console.log(this.data);
-
+    const country = require("../../country.json");
+    this.countryList=country;
   }
 
   close() {
@@ -63,6 +65,7 @@ export class ViewjobportalComponent implements OnInit {
           data => {
               if(data=="success"){
                 console.log('successfully updated...');
+                this.dialogRef.close();
 
               }
          
@@ -81,6 +84,7 @@ export class ViewjobportalComponent implements OnInit {
       .subscribe(
           data => {
            // this.dialogRef.close();
+           this.dialogRef.close();
 
           },
           error => {

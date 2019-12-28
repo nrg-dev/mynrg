@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JobportalComponent } from './jobportal/jobportal.component';
 import { ServerinfoComponent } from './serverinfo/serverinfo.component';
-import {MatDialogModule, MatFormFieldModule} from "@angular/material";
+import {MatDialogModule, MatFormFieldModule, MAT_DIALOG_DATA} from "@angular/material";
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CdkTableModule} from '@angular/cdk/table';

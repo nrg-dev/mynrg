@@ -19,6 +19,12 @@
         </select>
   
       
+        <label for="emailId1"><b>Email 1</b></label>
+        <input type="text" [(ngModel)]="model.emailId1" #url="ngModel" placeholder="Enter Email 1" name="emailId1" required>
+      
+        <label for="emailId2"><b>Email 2</b></label>
+        <input type="text" [(ngModel)]="model.emailId2" #url="ngModel" placeholder="Enter Email 2" name="emailId2" required>
+      
    
         <label for="url"><b>URL</b></label>
         <input type="text" [(ngModel)]="model.url" #url="ngModel" placeholder="Enter URL" name="url" required>
@@ -32,7 +38,7 @@
         
         <label for="email"><b>Notes</b></label>
   
-        <textarea id="notes" name="notes" placeholder="Write something.." ></textarea>
+        <textarea id="notes" [(ngModel)]="model.notes" #notes="ngModel" name="notes" placeholder="Write something.." ></textarea>
   
      
      

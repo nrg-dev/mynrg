@@ -12,7 +12,8 @@
         <label for="email"><b>COUNTRY</b></label>
   
         <select placeholder="Enter Country" [(ngModel)]="model.country" #country="ngModel" id="country" name="country">
-          <option>xxx</option>
+
+          <option *ngFor="let list of countryList" value="{{list.name}}">{{list.name}}</option>
   
         </select>
   
@@ -49,7 +50,7 @@
         
         <label for="email"><b>Notes</b></label>
   
-        <textarea id="notes" name="notes" placeholder="Write something.." ></textarea>
+        <textarea id="notes" name="notes" [(ngModel)]="model.notes" #notes="ngModel"></textarea>
   
      
      
