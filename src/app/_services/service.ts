@@ -5,7 +5,7 @@ import { ServerURL } from './url';
 
 
 @Injectable()
-export class UserService {    
+export class Service {    
     suburl:string;
    // private commonURL = this.globalsURL.serverURL;
     private commonURL = 'http://localhost:8093/mynrg-server/';
@@ -22,5 +22,5 @@ myPortalReg(portal: Portal){
     return this.http.post<Portal>(this.commonURL+'myPortalReg',portal);
 }
 
-
+ 
 }

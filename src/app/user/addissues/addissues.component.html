@@ -1,0 +1,47 @@
+
+<div class="container">
+
+    <h1>New Issue</h1>
+    <p>Please fill in this form to create an New Issue.</p>
+    <hr>
+    <form name="form"  class="modal-content" (ngSubmit)=" save()">
+      <div class="container">
+  
+        <label for="clientName"><b>Client Name</b></label>
+        <input type="text" [(ngModel)]="model.clientName" #clientName="ngModel" placeholder="Enter Client Name" name="clientName" required>
+      
+  
+        <label for="issueNotes"><b>Issue Desc</b></label>
+        <textarea [(ngModel)]="model.issueNotes" #issueNotes="ngModel" placeholder="Enter Issue" name="issueNotes" required>
+      </textarea>
+        <label for="priority"><b>Priority</b></label>
+  
+        <select placeholder="Choose" [(ngModel)]="model.priority" #priority="ngModel" id="priority" name="priority">
+          <option *ngFor="let list of priorityList" value="{{list.name}}">{{list.name}}</option>
+  
+        </select>
+
+        <label for="country"><b>COUNTRY</b></label>
+
+        <select placeholder="Choose country" [(ngModel)]="model.country" #country="ngModel" id="country" name="country">
+          <option *ngFor="let list of countryList" value="{{list.name}}">{{list.name}}</option>
+  
+        </select>
+  
+        
+       
+     
+        <button type="submit"  id="btnsave" value="Save"> Save </button>
+             
+          <button id="btnclose" class="mat-raised-button"(click)="close()">Cancel</button>
+  
+    </div>
+    </form>
+  </div>
+  <!--
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>
+
+-->

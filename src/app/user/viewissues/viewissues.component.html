@@ -1,0 +1,31 @@
+<div class="container">
+    <h1> Modify / Remove </h1>
+    <form name="form" >
+      <div class="container">
+
+     
+        <label for="clientName"><b>Clinet Name</b></label>
+        <input type="text" [(ngModel)]="model.clientName" #clientName="ngModel" name="clientName" required>
+      
+           <label for="priority"><b>Priority </b></label>
+      
+        <select  [(ngModel)]="model.priority" #priority="ngModel" id="priority" name="priority">
+
+            <option *ngFor="let list of priorityList" value="{{list.name}}">{{list.name}}</option>
+    
+          </select>
+
+
+  <label for="issueNotes"><b>Issue Desc</b></label>
+  <textarea  [(ngModel)]="model.issueNotes" #issueNotes="ngModel" name="issueNotes" required>
+
+  </textarea>
+  <button type="submit" id="btnupdate" (click)="editRemove('PUT')" value="Save"> Update </button>
+        <button type="submit" id="btndel" (click)="editRemove('DELETE')"> Delete </button>
+
+<button id="btnclose" class="mat-raised-button"(click)="close()">Close</button>
+</div>
+</form>
+</div>
+
+

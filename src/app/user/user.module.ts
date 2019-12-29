@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { JobportalComponent } from './jobportal/jobportal.component';
-import { ServerinfoComponent } from './serverinfo/serverinfo.component';
 import {MatDialogModule, MatFormFieldModule, MAT_DIALOG_DATA} from "@angular/material";
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
@@ -9,14 +7,11 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import { Routes, RouterModule } from '@angular/router';
 import {DataTablesModule} from 'angular-datatables';
-import { AddjobportalComponent } from './addjobportal/addjobportal.component';
-import { ViewjobportalComponent } from './viewjobportal/viewjobportal.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AlexService } from './alex.service';
 import {
   MatAutocompleteModule,
-  MatBadgeModule,
+  MatBadgeModule, 
   MatBottomSheetModule,
   MatButtonModule,
   MatButtonToggleModule,
@@ -50,25 +45,25 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
-import { UserModule } from '../user/user.module';
-import { AlertService } from '../alert/alert.service';
+import { UserService } from './user.service';
+import { AddissuesComponent } from './addissues/addissues.component';
+import { ViewissuesComponent } from './viewissues/viewissues.component';
+import { DatatableissuesComponent, Filter } from './datatableissues/datatableissues.component';
 import { AlertComponent } from '../alert/alert/alert.component';
+import { AlertService } from '../alert/alert.service';
 
-const routes: Routes = [
-  { path: 'jobportal', component: JobportalComponent },
-  { path: 'serverinfo', component: ServerinfoComponent },
-  { path: 'addjobportal', component: AddjobportalComponent },
-  { path: 'viewjobportal', component: ViewjobportalComponent },
+const routes1: Routes = [
+  { path: 'datatableissues', component: DatatableissuesComponent },
+  { path: 'addissues', component: AddissuesComponent },
+  { path: 'viewissues', component: ViewissuesComponent },
+  
 
 ];
 
 
 @NgModule({
   declarations: [
-    JobportalComponent, 
-    ServerinfoComponent, 
-    AddjobportalComponent, 
-    ViewjobportalComponent],
+    Filter,AddissuesComponent,ViewissuesComponent, DatatableissuesComponent,AlertComponent ],
   imports: [
     CommonModule,
     FormsModule,
@@ -118,16 +113,14 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     DataTablesModule.forRoot(),
-    RouterModule.forChild(routes) 
+    RouterModule.forChild(routes1) 
   ],
   exports: [
-    //AlertComponent
+    AlertComponent,
+    
   ],
-  entryComponents: [],
-
-  providers: [AlexService],
+  entryComponents: [AlertComponent,Filter],
+  providers: [UserService,AlertService],
 
 })
-export class AlexModule { }
-
-
+export class UserModule { }

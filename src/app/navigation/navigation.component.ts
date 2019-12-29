@@ -4,7 +4,7 @@ import { SubMenuItem } from '../subMenuItem.model';
 import { MatSidenav } from '@angular/material/sidenav';
 import { RouterModule, Routes, Router ,ActivatedRoute} from "@angular/router";
 import { BehaviorSubject, Observable } from 'rxjs';
-
+ 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -71,6 +71,8 @@ showToggle: string;
     this.menuItems = [
       new MenuItem("DashBoard","/landingpage"),
       new MenuItem("Reports","employeelist"),
+      new MenuItem("Issues","datatableissues"),
+
       new MenuItem("Log Out","logout"),
       new MenuItem("",""),
 
@@ -78,6 +80,7 @@ showToggle: string;
 
 
     this.menuItemsIcons = [
+      new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/logout.png","login"),
@@ -87,14 +90,14 @@ showToggle: string;
     ]
    }
    if(localStorage.getItem("currentusername")=="alex"){
-
+ 
     // Alex login
     this.menuItems = [
       new MenuItem("DashBoard","/landingpage"),
       new MenuItem("Job Poral","jobportal"),
+      new MenuItem("Issues","datatableissues"),
       new MenuItem("Server Info","serverinfo"),
       new MenuItem("My Contacts","employeelist"),
-
       new MenuItem("Log Out","logout"),
       new MenuItem("",""),
 
@@ -106,7 +109,7 @@ showToggle: string;
       new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/menu.png","/landingpage"),
-
+      new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/logout.png","login"),
       new MenuItem('./assets/images/null.png',""),
 
@@ -118,13 +121,11 @@ showToggle: string;
     // User login
     this.menuItems = [
       new MenuItem("DashBoard","/landingpage"),
-      new MenuItem("User Management","usermgtadd"),
+      new MenuItem("Issues","datatableissues"),
       new MenuItem("Log Out","logout"),
       new MenuItem("",""),
 
     ]
-
-
     this.menuItemsIcons = [
       new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/menu.png","employeelist"),

@@ -12,7 +12,7 @@ import { Portal } from 'src/app/_models';
 export class AddjobportalComponent implements OnInit {
   countryList:any;
   model: any = {};
-  portal:Portal;
+  portal:Portal; 
   constructor(
     private router: Router,
     private alexService: AlexService,
@@ -25,7 +25,6 @@ export class AddjobportalComponent implements OnInit {
   }
 
   close() {
-   // alert("close called...");
     this.dialogRef.close();
   }
 

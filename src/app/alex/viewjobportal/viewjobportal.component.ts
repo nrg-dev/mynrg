@@ -3,6 +3,7 @@ import { MatDialogRef,MAT_DIALOG_DATA} from "@angular/material";
 import { Inject } from '@angular/core';
 import { AlexService } from '../alex.service';
 import { Portal } from 'src/app/_models';
+import { AlertService } from 'src/app/alert/alert.service';
  
 @Component({
   selector: 'app-viewjobportal',
@@ -15,6 +16,7 @@ export class ViewjobportalComponent implements OnInit {
   portal:Portal;
   constructor(
     private alexService: AlexService,
+    private alertService: AlertService,
 
     public dialogRef: MatDialogRef<ViewjobportalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -29,7 +31,7 @@ export class ViewjobportalComponent implements OnInit {
          data => {
              this.model = data;
              console.log("portal Id-->"+this.model.portalId);
-             console.log("portal name-->"+this.model.portalName);
+             console.log("notes name-->"+this.model.notes);
 
              
          },
@@ -63,9 +65,15 @@ public countryList;
       this.alexService.myPortalupdate(this.model)
       .subscribe(
           data => {
-              if(data=="success"){
+            console.log('update output-->'+data.status);
+
+              if(data.status=="success"){
                 console.log('successfully updated...');
                 this.dialogRef.close();
+              //  this.alertService.success("successfully updated");
+             //   setTimeout(() => {
+             //     this.alertService.success("");
+             //   }, 1000);
 
               }
          

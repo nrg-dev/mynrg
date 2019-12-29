@@ -16,7 +16,7 @@
           <option *ngFor="let list of countryList" value="{{list.name}}">{{list.name}}</option>
   
         </select>
-  
+   
       
    
         <label for="url"><b>URL</b></label>
@@ -43,6 +43,11 @@
         <label for="phoneNumber2"><b>Phone Number 2</b></label>
         <input type="text" [(ngModel)]="model.phoneNumber2" #phoneNumber2="ngModel" name="phoneNumber2" required>
        
+        <label for="createdDate"><b>Created Date</b></label>
+        <input type="text" [(ngModel)]="model.createdDate" #createdDate="ngModel" name="createdDate" required>
+       
+
+
         <label for="updatedDate"><b>Updated Date</b></label>
         <input type="text" [(ngModel)]="model.updatedDate" #updatedDate="ngModel" name="updatedDate" required>
        
@@ -50,7 +55,7 @@
         
         <label for="email"><b>Notes</b></label>
   
-        <textarea id="notes" name="notes" [(ngModel)]="model.notes" #notes="ngModel"></textarea>
+        <textarea  [(ngModel)]="model.notes" #notes="ngModel" name="notes"></textarea>
   
      
      
@@ -62,10 +67,3 @@
     </div>
     </form>
   </div>
-  <!--
-<mat-dialog-actions>
-    <button class="mat-raised-button"(click)="close()">Close</button>
-    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
-</mat-dialog-actions>
-
--->

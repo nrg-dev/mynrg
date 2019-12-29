@@ -14,8 +14,9 @@ import { LoginComponent } from './login/login.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 //import { AlertComponent } from './_directives/index';
-import { AlertService, AuthenticationService,UserService } from './_services/index';
+import { AuthenticationService } from './_services/index';
 import { AlexModule } from './alex/alex.module';
+import { UserModule } from './user/user.module';
 
 
 const appRoutes: Routes = [
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'Login Component' }},
   { path: 'landingpage', component: LandingpageComponent, data: { title: 'Landing Component' },
     children: [
-      { path: '', loadChildren: () => AlexModule }
+      { path: '', loadChildren: () => AlexModule },
+      { path: '', loadChildren: () => UserModule }
 
     ],
   },
@@ -53,10 +55,14 @@ const appRoutes: Routes = [
       { useHash: true , onSameUrlNavigation: 'reload'} // <-- debugging purposes only
     ),
     CustomMaterialModule,
-
-    AlexModule
+    AlexModule,
+    UserModule,
   ],
-  providers: [AlertService,AuthenticationService,UserService],
+  exports: [
+    AlexModule,
+    //UserModule,
+  ],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

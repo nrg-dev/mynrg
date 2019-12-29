@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../_models/index';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AlertService } from '../_services/index';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -15,7 +14,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   passwordtype="password";
 
-  constructor(  private router: Router, private alertService: AlertService) { }
+  constructor(  private router: Router) { }
 
   ngOnInit() {
    //document.getElementById('id01').style.display='block'";
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   onClickSubmit(){
-    this.alertService.clear();
+   // this.alertService.clear();
     let message="Invalid User Name !";
     console.log("user name : password"+this.model.currentusername+this.model.currentpassword);
     localStorage.setItem('currentusername',this.model.currentusername);
@@ -39,7 +38,7 @@ export class LoginComponent implements OnInit {
 
     }
     else {
-      this.alertService.error(message);
+     // this.alertService.error(message);
 
     }
 

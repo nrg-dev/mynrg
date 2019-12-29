@@ -1,49 +1,75 @@
 
 import * as jsPDF from 'jspdf';
-import { DataTablesModule, DataTableDirective } from 'angular-datatables';
-import * as jQuery from 'jquery';
-import { Subject } from 'rxjs';
-//import { AlertService, UserService } from '../../_services';
 import { Router } from '@angular/router';
 import { Portal } from 'src/app/_models';
-import { HttpClientModule } from '@angular/common/http'; 
-import { AlexService } from '../alex.service';
 import {MatDialog, MatDialogConfig} from "@angular/material";
-import { AddjobportalComponent } from '../addjobportal/addjobportal.component';
-import { ViewjobportalComponent } from '../viewjobportal/viewjobportal.component';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { UserService } from '../user.service';
+import { AddissuesComponent } from '../addissues/addissues.component';
+import { ViewissuesComponent } from '../viewissues/viewissues.component';
+import { Issue } from 'src/app/_models/issue';
+import { AlertService } from 'src/app/alert/alert.service';
+import { Inject} from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { assertNotNull } from '@angular/compiler/src/output/output_ast';
+
 
 
 @Component({
-  selector: 'app-jobportal',
-  templateUrl: './jobportal.component.html',
-  styleUrls: ['./jobportal.component.css']
+  selector: 'filter',
+  styleUrls: ['./filter.css'],
+  templateUrl: '/filter.html', 
 })
-export class JobportalComponent implements OnInit {
-  displayedColumns: string[] = ['portalName', 'username', 'password','phoneNumber1','emailId1','action'];
+export class Filter {
+  countryList:any;
+  priorityList:any;
+  model: any = {};
+  issue:Issue; 
+  constructor(
+    public dialogRef: MatDialogRef<Filter>,
+    ) {
+      const country = require("../../country.json");
+      this.countryList=country;
+      const priority = require("../../priority.json");
+      this.priorityList=priority;
+
+    }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+@Component({
+  selector: 'app-datatableissues',
+  templateUrl: './datatableissues.component.html',
+  styleUrls: ['./datatableissues.component.css']
+})
+export class DatatableissuesComponent implements OnInit {
+  displayedColumns: string[] = ['clientName','issueStatus','priority','issueId'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true }) sort: MatSort;
   @ViewChild('pdfTable', {static: false}) pdfTable: ElementRef;
 
-
+ 
   model: any = {};
-  portal:Portal;
+  issue:Issue;
   public add=false
-  portalview="none";
   public dataList : any;
   dialogConfig = new MatDialogConfig();
   isDtInitialized:boolean = false
 
   constructor( 
     private router: Router,
-    private alexService: AlexService,
+    private userService: UserService,
     private dialog: MatDialog,
+    private alertService: AlertService,
     ) { 
 
-      this.alexService.myPortaltable()
+      this.userService.load()
       .subscribe(
           data => {
           this.dataList = data;
@@ -63,16 +89,31 @@ export class JobportalComponent implements OnInit {
   ngOnInit() {
   }
 
+  openfilter(): void {
+   
+      const dialogRef = this.dialog.open(Filter, {
+        
+         width: '60%',
+  //  data: {name: this.name, animal: this.animal}
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+   // this.animal = result;
+  });
+
+}    
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
-
+ 
   refresh() {
     console.log("before calling...ngOnInit......"); 
-    this.alexService.myPortaltable()
+    this.userService.load()
       .subscribe(
           data => {
               this.dataList = data;
@@ -94,31 +135,29 @@ export class JobportalComponent implements OnInit {
     'top': '1000',
     left: '100'
   };
-  this.dialog.open(AddjobportalComponent,{
-   // data: {dialogTitle: "hello", dialogText: "text"},
+  this.dialog.open(AddissuesComponent,{
     height: '80%', 
   })
   .afterClosed().subscribe(result => {
     this.refresh();
   });
     
-}
-
-public viewData(portalId:number){
-console.log("JobportalComponent Id--->"+portalId);
+} 
+ 
+public viewData(issueId:number){
+console.log("JobportalComponent Id--->"+issueId);
   this.dialogConfig.disableClose = true;
   this.dialogConfig.autoFocus = true;
   this.dialogConfig.position = {
     'top': '1000',
     left: '100'
   };
-  this.dialog.open(ViewjobportalComponent,{
+  this.dialog.open(ViewissuesComponent,{
   //  data: {dialogTitle: "hello", dialogText: "text"},
-    data: portalId,
+    data: issueId,
     height: '80%'
   }).afterClosed().subscribe(result => {
    this.refresh();
-
    });;
 }
 

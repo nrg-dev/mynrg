@@ -7,8 +7,8 @@
     <form name="form"  class="modal-content" (ngSubmit)=" myPortalReg()">
       <div class="container">
   
-        <label for="portalname"><b>PORTAL_NAME</b></label>
-        <input type="text" [(ngModel)]="model.portalname" #portalname="ngModel" placeholder="PORTAL_NAME" name="portalname" required>
+        <label for="portalName"><b>PORTAL_NAME</b></label>
+        <input type="text" [(ngModel)]="model.portalName" #portalName="ngModel" placeholder="Enter Job Portal Name" name="portalName" required>
       
   
         <label for="email"><b>COUNTRY</b></label>
@@ -26,11 +26,19 @@
         <input type="text" [(ngModel)]="model.emailId2" #url="ngModel" placeholder="Enter Email 2" name="emailId2" required>
       
    
+
+        <label for="phoneNumber1"><b>Phone Number 1</b></label>
+        <input type="text" [(ngModel)]="model.phoneNumber1" #phoneNumber1="ngModel" placeholder="Enter Phone Number 1" name="phoneNumber1" required>
+      
+        <label for="phoneNumber2"><b>Phone Number 2</b></label>
+        <input type="text" [(ngModel)]="model.phoneNumber2" #phoneNumber2="ngModel" placeholder="Enter Phone Number 2" name="phoneNumber2" required>
+      
+
         <label for="url"><b>URL</b></label>
         <input type="text" [(ngModel)]="model.url" #url="ngModel" placeholder="Enter URL" name="url" required>
         
         <label for="username"><b>USER_NAME</b></label>
-        <input type="text" [(ngModel)]="model.username" #username="ngModel" placeholder="Enter USER_NAME" name="username" required>
+        <input type="text" [(ngModel)]="model.userName" #userName="ngModel" placeholder="Enter User Name" name="userName" required>
        
         <label for="password"><b>PASSWORD</b></label>
         <input type="text" [(ngModel)]="model.password" #password="ngModel" placeholder="Enter PASSWORD" name="password" required>
@@ -44,8 +52,8 @@
      
         <button type="submit"  id="btnsave" value="Save"> Save </button>
              
-          <button id="btnclose" class="mat-raised-button"(click)="close()">Close</button>
-
+          <button id="btnclose" class="mat-raised-button"(click)="close()">Cancel</button>
+  
     </div>
     </form>
   </div>

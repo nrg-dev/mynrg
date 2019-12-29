@@ -1,19 +1,18 @@
 ﻿import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/filter';
+import { Observable, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
-import { Alert, AlertType } from '../_models/alert';
+import { Alert, AlertType } from './alert.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AlertService {
     private subject = new Subject<Alert>();
     private keepAfterRouteChange = false;
 
     constructor(private router: Router) {
         // clear alert messages on route change unless 'keepAfterRouteChange' flag is true
-        router.events.subscribe(event => {
+        this.router.events.subscribe(event => {
             if (event instanceof NavigationStart) {
                 if (this.keepAfterRouteChange) {
                     // only keep for a single route change
@@ -26,26 +25,26 @@ export class AlertService {
         });
     }
 
-    // subscribe to alerts
-    getAlert(alertId?: string): Observable<any> {
-        return this.subject.asObservable().filter((x: Alert) => x && x.alertId === alertId);
+    // enable subscribing to alerts observable
+    onAlert(alertId?: string): Observable<Alert> {
+        return this.subject.asObservable().pipe(filter(x => x && x.alertId === alertId));
     }
 
     // convenience methods
-    success(message: string) {
-        this.alert(new Alert({ message, type: AlertType.Success }));
+    success(message: string, alertId?: string) {
+        this.alert(new Alert({ message, type: AlertType.Success, alertId }));
     }
 
-    error(message: string) {
-        this.alert(new Alert({ message, type: AlertType.Error }));
+    error(message: string, alertId?: string) {
+        this.alert(new Alert({ message, type: AlertType.Error, alertId }));
     }
 
-    info(message: string) {
-        this.alert(new Alert({ message, type: AlertType.Info }));
+    info(message: string, alertId?: string) {
+        this.alert(new Alert({ message, type: AlertType.Info, alertId }));
     }
 
-    warn(message: string) {
-        this.alert(new Alert({ message, type: AlertType.Warning }));
+    warn(message: string, alertId?: string) {
+        this.alert(new Alert({ message, type: AlertType.Warning, alertId }));
     }
 
     // main alert method    
