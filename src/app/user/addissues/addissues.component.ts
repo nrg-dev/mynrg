@@ -25,8 +25,8 @@ export class AddissuesComponent implements OnInit {
 
   ngOnInit() {
     const country = require("../../country.json");
-    this.countryList=country;
     const priority = require("../../priority.json");
+    this.countryList=country;
     this.priorityList=priority;
   }
 

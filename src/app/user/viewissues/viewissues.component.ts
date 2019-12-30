@@ -29,7 +29,8 @@ export class ViewissuesComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {  
 
-    const priority = require("../../priority.json");
+//    const priority = require("../../priority.json");
+    const priority = "../../priority.json";
     this.priorityList=priority;
         //  console.log(" ViewjobportalComponent ID  --->"+this.data);
      // console.log("data 2--->"+this.data.dialogText);
@@ -50,7 +51,8 @@ export class ViewissuesComponent implements OnInit {
      }
   ngOnInit() {
     console.log(this.data);
-    const country = require("../../country.json");
+  //  const country = require("../../country.json");
+    const country = '../../country.json';
     this.countryList=country;
   }
 

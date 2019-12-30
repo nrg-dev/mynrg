@@ -3,6 +3,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import { AlexService } from '../alex.service';
 import { Router } from '@angular/router';
 import { Portal } from 'src/app/_models';
+import { Observable } from 'rxjs';
+//import SampleJson from '../../country.json';
 
 @Component({
   selector: 'app-addjobportal',
@@ -20,10 +22,14 @@ export class AddjobportalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const country = require("../../country.json");
+   /// alert(SampleJson);
+    //console.log(SampleJson.values);
+  const country = require("../../country.json");
+   // const country = "/src/app/country.json";
     this.countryList=country;
+     
   }
-
+ 
   close() {
     this.dialogRef.close();
   }

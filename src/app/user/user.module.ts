@@ -51,6 +51,7 @@ import { ViewissuesComponent } from './viewissues/viewissues.component';
 import { DatatableissuesComponent, Filter } from './datatableissues/datatableissues.component';
 import { AlertComponent } from '../alert/alert/alert.component';
 import { AlertService } from '../alert/alert.service';
+import { AlertModule } from '../alert/alert.module';
 
 const routes1: Routes = [
   { path: 'datatableissues', component: DatatableissuesComponent },
@@ -63,8 +64,9 @@ const routes1: Routes = [
 
 @NgModule({
   declarations: [
-    Filter,AddissuesComponent,ViewissuesComponent, DatatableissuesComponent,AlertComponent ],
+    Filter,AddissuesComponent,ViewissuesComponent, DatatableissuesComponent ],
   imports: [
+    AlertModule,
     CommonModule,
     FormsModule,
     MatFormFieldModule,
@@ -116,10 +118,9 @@ const routes1: Routes = [
     RouterModule.forChild(routes1) 
   ],
   exports: [
-    AlertComponent,
     
   ],
-  entryComponents: [AlertComponent,Filter],
+  entryComponents: [Filter],
   providers: [UserService,AlertService],
 
 })

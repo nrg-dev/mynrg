@@ -20,13 +20,17 @@ import { UserModule } from './user/user.module';
 
 
 const appRoutes: Routes = [
-  //{ path: '', component: FirstComponent, data: { title: 'First Component' } },
   { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard Component' } },
   { path: 'login', component: LoginComponent, data: { title: 'Login Component' }},
   { path: 'landingpage', component: LandingpageComponent, data: { title: 'Landing Component' },
     children: [
-      { path: '', loadChildren: () => AlexModule },
-      { path: '', loadChildren: () => UserModule }
+       // dev
+       //   { path: '', loadChildren: () => AlexModule },
+       //{ path: '', loadChildren: () => UserModule }
+      
+       // prod
+      { path: '', loadChildren: './alex/alex.module#AlexModule' },
+      { path: '', loadChildren: './user/user.module#UserModule' }
 
     ],
   },

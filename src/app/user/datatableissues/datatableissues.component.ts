@@ -19,7 +19,7 @@ import { assertNotNull } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'filter',
   styleUrls: ['./filter.css'],
-  templateUrl: '/filter.html', 
+  templateUrl: './filter.html', 
 })
 export class Filter {
   countryList:any;
@@ -29,17 +29,23 @@ export class Filter {
   constructor(
     public dialogRef: MatDialogRef<Filter>,
     ) {
-      const country = require("../../country.json");
-      this.countryList=country;
-      const priority = require("../../priority.json");
-      this.priorityList=priority;
+  //    const country = require("../../country.json");
+      const country = '../../country.json';
+      const priority = "../../priority.json";
 
+      this.countryList=country;
+      //const priority = require("../../priority.json");
+      this.priorityList=priority;
+     // private _jsonURL = 'assets/SampleJson.json';
     }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+  apply(){
+
+  }
 }
 @Component({
   selector: 'app-datatableissues',
