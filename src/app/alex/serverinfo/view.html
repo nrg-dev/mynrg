@@ -32,8 +32,8 @@
     <div style="height: 20px;" class="row"></div>
 
    
-    <button type="submit"  id="btnsave" value="Save"> Update </button>     
-    <button id="btnclose" class="mat-raised-button">Delete</button>      
+    <button type="submit"  id="btnsave" (click)="editRemove('PUT')"  value="Save"> Update </button>     
+    <button id="btnclose" (click)="editRemove('DELETE')"  class="mat-raised-button">Delete</button>      
     <button id="btnclose" class="mat-raised-button">Cancel</button>
   </div>
 

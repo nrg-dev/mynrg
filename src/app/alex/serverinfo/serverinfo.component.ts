@@ -86,12 +86,56 @@ export class ViewServerInfo {
   }
 
 
-  updateDelete(): void {
+  editRemove(value:string) {
+    if(value=="PUT"){
+    // alert(" PUT ID --->"+value);
+     console.log("Update  ID --->"+this.model.serverInfoId);
+     this.alexService.updateServerinfo(this.model)
+     .subscribe(
+         data => {
+           console.log('update output-->'+data.status);
+
+             if(data.status=="success"){
+               console.log('successfully updated...');
+               this.dialogRef.close();
+               this.alertService.success("Server info successfully updated ");
+               setTimeout(() => {
+                this.alertService.clear();
+              }, 2000);
+
+             }
+        
+             
+         },
+         error => {
+           this.dialogRef.close();
+             alert('Udate Error !!!!');
+         }
+     );
+ 
+    }
+    if(value=="DELETE"){
+     console.log(" ID --->"+this.model.serverInfoId);
+     this.alexService.removeServerinfo(this.model.serverInfoId)
+     .subscribe(
+         data => {
+          // this.dialogRef.close();
+          this.dialogRef.close();
+          console.log('successfully deleted...');
+          this.alertService.success("Server info successfully Removed..");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+
+         },
+         error => {
+             alert('Error !!!!');
+         }
+     );
+
+
+    }
     this.dialogRef.close();
-  }
-
-  apply(){
-
   }
 }
 
