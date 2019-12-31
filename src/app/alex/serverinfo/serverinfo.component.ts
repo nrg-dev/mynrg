@@ -85,6 +85,11 @@ export class ViewServerInfo {
     this.dialogRef.close();
   }
 
+
+  updateDelete(): void {
+    this.dialogRef.close();
+  }
+
   apply(){
 
   }

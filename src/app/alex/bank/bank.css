@@ -36,6 +36,11 @@ button {
   width: 100%;
   opacity: 0.9;
 }
+
+#btnsave{
+  background-color:green;
+
+}
 #btndel{
   background-color: red;
 

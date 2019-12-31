@@ -25,6 +25,8 @@ export class AddBank {
   model: any = {};
   bank:Bank; 
   constructor(
+    private alexService: AlexService,
+    private alertService: AlertService,
     public dialogRef: MatDialogRef<AddBank>,
     ) {
       const country = '../../country.json';
@@ -39,7 +41,23 @@ export class AddBank {
 
   saveBank(){
     console.log("save bank");
-      }
+
+    this.model.createdPerson=localStorage.getItem("currentusername");
+    this.model.currentUser=localStorage.getItem('currentusername');
+    console.log('............controller save bank....');
+    this.alexService.saveBank(this.model)
+              .subscribe(
+                  data => {
+                      console.log('return value -->'+data);
+                                   
+                  },
+                  error => {
+                    alert("Server error...");
+  
+                  });
+    this.dialogRef.close();
+    
+  }
 }
 
 
@@ -57,6 +75,7 @@ export class ViewBank {
 
   constructor(
     private alexService: AlexService,
+    private alertService: AlertService,
     public dialogRef: MatDialogRef<ViewBank>,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
@@ -82,8 +101,56 @@ export class ViewBank {
     this.dialogRef.close();
   }
 
-  updateDelete(){
-  console.log("updateDelete");
+  editRemove(value:string) {
+    if(value=="PUT"){
+    // alert(" PUT ID --->"+value);
+     console.log("Update  ID --->"+this.model.bankId);
+     this.alexService.updateBank(this.model)
+     .subscribe(
+         data => {
+           console.log('update output-->'+data.status);
+
+             if(data.status=="success"){
+               console.log('successfully updated...');
+               this.dialogRef.close();
+               this.alertService.success("Bank info successfully updated ");
+               setTimeout(() => {
+                this.alertService.clear();
+              }, 2000);
+
+             }
+        
+             
+         },
+         error => {
+           this.dialogRef.close();
+             alert('Udate Error !!!!');
+         }
+     );
+ 
+    }
+    if(value=="DELETE"){
+     console.log("Portal ID --->"+this.model.bankId);
+     this.alexService.removeBank(this.model.bankId)
+     .subscribe(
+         data => {
+          // this.dialogRef.close();
+          this.dialogRef.close();
+          console.log('successfully deleted...');
+          this.alertService.success("Bank info successfully Removed..");
+          setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
+
+         },
+         error => {
+             alert('Error !!!!');
+         }
+     );
+
+
+    }
+    this.dialogRef.close();
   }
 }
 

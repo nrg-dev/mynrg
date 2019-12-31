@@ -36,20 +36,16 @@ export class AddjobportalComponent implements OnInit {
 
   myPortalReg() {
     this.model.createdPerson=localStorage.getItem("currentusername");
-    //this.dialogRef.close(this.form.value);
     this.model.currentUser=localStorage.getItem('currentusername');
     console.log('............controller myPortalReg....');
     this.alexService.myPortalReg(this.model)
               .subscribe(
                   data => {
-                  //   this.portal=data;
                       console.log('return value -->'+data);
-                     // alert("Successfully Saved ");
                       this.model.portalname=null;
                     //  if(this.portal.status=="success") {
                           console.log('If User Exits');
-                       //   this.userExsistdialog = 'block';
-                       //   this.loading = false;
+
                    //   }
   
                     

@@ -118,7 +118,7 @@ getBank(id:number){
 
 // Update 
 updateBank(bank: Bank){
-    return this.http.put<Portal>(this.commonURL+'bank/update',bank);
+    return this.http.put<Bank>(this.commonURL+'bank/update',bank);
 
 }
 
