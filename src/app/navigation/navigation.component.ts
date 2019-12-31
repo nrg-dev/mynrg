@@ -97,7 +97,9 @@ showToggle: string;
       new MenuItem("Job Poral","jobportal"),
       new MenuItem("Issues","datatableissues"),
       new MenuItem("Server Info","serverinfo"),
-      new MenuItem("My Contacts","employeelist"),
+      new MenuItem("My Contacts","connection"),
+      new MenuItem("My Bank","bank"),
+
       new MenuItem("Log Out","logout"),
       new MenuItem("",""),
 
@@ -105,6 +107,7 @@ showToggle: string;
 
 
     this.menuItemsIcons = [
+      new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/menu.png","/landingpage"),
       new MenuItem("./assets/images/menu.png","/landingpage"),

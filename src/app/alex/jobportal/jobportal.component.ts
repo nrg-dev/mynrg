@@ -87,7 +87,7 @@ export class JobportalComponent implements OnInit {
       );
   }
 
-  openDialogForAdd() {
+  addNew() {
   this.dialogConfig.disableClose = true;
   this.dialogConfig.autoFocus = true;
   this.dialogConfig.position = {

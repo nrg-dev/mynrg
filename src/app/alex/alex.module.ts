@@ -2,15 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JobportalComponent } from './jobportal/jobportal.component';
 import { ServerinfoComponent } from './serverinfo/serverinfo.component';
+import { BankComponent } from './bank/bank.component';
+
 import {MatDialogModule, MatFormFieldModule, MAT_DIALOG_DATA} from "@angular/material";
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+//import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import { Routes, RouterModule } from '@angular/router';
 import {DataTablesModule} from 'angular-datatables';
 import { AddjobportalComponent } from './addjobportal/addjobportal.component';
 import { ViewjobportalComponent } from './viewjobportal/viewjobportal.component';
+import { ConnectionComponent, AddConnection,ViewConnection } from './connection/connection.component';
+import { AddServerInfo, ViewServerInfo } from './serverinfo/serverinfo.component';
+import { AddBank, ViewBank } from './bank/bank.component';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AlexService } from './alex.service';
@@ -50,15 +56,15 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
-import { UserModule } from '../user/user.module';
-import { AlertService } from '../alert/alert.service';
-import { AlertComponent } from '../alert/alert/alert.component';
+
 
 const routes: Routes = [
   { path: 'jobportal', component: JobportalComponent },
   { path: 'serverinfo', component: ServerinfoComponent },
   { path: 'addjobportal', component: AddjobportalComponent },
   { path: 'viewjobportal', component: ViewjobportalComponent },
+  { path: 'connection', component: ConnectionComponent },
+  { path: 'bank', component: BankComponent },
 
 ];
 
@@ -68,7 +74,16 @@ const routes: Routes = [
     JobportalComponent, 
     ServerinfoComponent, 
     AddjobportalComponent, 
-    ViewjobportalComponent],
+    ViewjobportalComponent, 
+    ConnectionComponent,
+    AddConnection,
+    ViewConnection,
+    AddServerInfo,
+    ViewServerInfo,
+    BankComponent,
+    AddBank,
+    ViewBank,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -123,7 +138,7 @@ const routes: Routes = [
   exports: [
     //AlertComponent
   ],
-  entryComponents: [],
+  entryComponents: [AddConnection,ViewConnection,AddServerInfo,ViewServerInfo,AddBank,ViewBank],
 
   providers: [AlexService],
 

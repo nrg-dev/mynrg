@@ -17,6 +17,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthenticationService } from './_services/index';
 import { AlexModule } from './alex/alex.module';
 import { UserModule } from './user/user.module';
+import { AlertModule } from './alert/alert.module';
+import { AlertService } from './alert/alert.service';
 
 
 const appRoutes: Routes = [
@@ -49,6 +51,7 @@ const appRoutes: Routes = [
 
   imports: [
     FormsModule,
+    AlertModule,
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -66,7 +69,7 @@ const appRoutes: Routes = [
     AlexModule,
     //UserModule,
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService,AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

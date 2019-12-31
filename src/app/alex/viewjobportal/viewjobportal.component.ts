@@ -17,15 +17,10 @@ export class ViewjobportalComponent implements OnInit {
   constructor(
     private alexService: AlexService,
     private alertService: AlertService,
-
     public dialogRef: MatDialogRef<ViewjobportalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {  
-
-      //console.log('data', this.dialogRef);
-      console.log(" ViewjobportalComponent ID  --->"+this.data);
-     // console.log("data 2--->"+this.data.dialogText);
-      
+    console.log(" ViewjobportalComponent ID  --->"+this.data);      
      this.alexService.myPortalview(this.data)
      .subscribe(
          data => {
@@ -39,12 +34,9 @@ export class ViewjobportalComponent implements OnInit {
              alert('Error !!!!');
          }
      );
-     //this.dialogRef.close(this.data);
+   }
 
-     // this.dialogTitle = this.data.dialogTitle;
-    //this.dialogText = this.data.dialogText;
 
-     }
 public countryList;
   ngOnInit() {
     const country = require("../../country.json");
@@ -69,10 +61,10 @@ public countryList;
               if(data.status=="success"){
                 console.log('successfully updated...');
                 this.dialogRef.close();
-              //  this.alertService.success("successfully updated");
-             //   setTimeout(() => {
-             //     this.alertService.success("");
-             //   }, 1000);
+                this.alertService.success("successfully updated");
+                setTimeout(() => {
+                  this.alertService.success("");
+                }, 1000);
 
               }
          
@@ -92,7 +84,7 @@ public countryList;
           data => {
            // this.dialogRef.close();
            this.dialogRef.close();
-
+           console.log('successfully deleted...');
           },
           error => {
               alert('Error !!!!');

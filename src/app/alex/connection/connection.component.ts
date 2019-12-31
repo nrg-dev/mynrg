@@ -1,7 +1,7 @@
 
 import * as jsPDF from 'jspdf';
 import { Router } from '@angular/router';
-import { ServerInfo } from 'src/app/_models';
+import { Connection } from 'src/app/_models';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
@@ -16,16 +16,16 @@ import { AlexService } from '../alex.service';
 
 @Component({
   selector: 'add',
-  styleUrls: ['./serverinfo.css'],
+  styleUrls: ['./connection.css'],
   templateUrl: './add.html', 
 })
-export class AddServerInfo {
+export class AddConnection {
   countryList:any;
   priorityList:any;
   model: any = {};
-  serverinfo:ServerInfo; 
+  connection:Connection; 
   constructor(
-    public dialogRef: MatDialogRef<AddServerInfo>,
+    public dialogRef: MatDialogRef<AddConnection>,
     ) {
       const country = '../../country.json';
       const priority = "../../priority.json";
@@ -37,66 +37,53 @@ export class AddServerInfo {
     this.dialogRef.close();
   }
 
-  saveServerinfo(){
-
-  }
+  saveConnection(){
+    console.log("saveConnection");
+      }
 }
 
 
 
 @Component({
   selector: 'view',
-  styleUrls: ['./serverinfo.css'],
+  styleUrls: ['./connection.css'],
   templateUrl: './view.html', 
 })
-export class ViewServerInfo {
+export class ViewConnection {
   countryList:any;
   priorityList:any;
   model: any = {};
-  serverinfo:ServerInfo; 
+  connection:Connection; 
   constructor(
     private alexService: AlexService,
-    private alertService: AlertService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<ViewServerInfo>,
+    public dialogRef: MatDialogRef<ViewConnection>,
+    @Inject(MAT_DIALOG_DATA) public data: any
     ) {
       const country = '../../country.json';
       const priority = "../../priority.json";
       this.countryList=country;
       this.priorityList=priority;
+      this.alexService.getConnection(this.data)
+     .subscribe(
+         data => {
+             this.model = data;
+            // console.log("bank Id-->"+this.model.portalId);
 
-      console.log("  ID  --->"+this.data);      
-      this.alexService.getServerinfo(this.data)
-      .subscribe(
-          data => {
-              this.model = data;
-              console.log(" Id-->"+this.model.portalId);
- 
-              
-          },
-          error => {
-              alert('Error !!!!');
-          }
-      );
-
-    }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  apply(){
-
-  }
+             
+         },
+         error => {
+             alert('Error !!!!');
+         }
+     );
 }
-
+}
 @Component({
-  selector: 'app-serverinfo',
-  templateUrl: './serverinfo.component.html',
-  styleUrls: ['./serverinfo.component.css']
+  selector: 'app-connection',
+  templateUrl: './connection.component.html',
+  styleUrls: ['./connection.component.css']
 })
-export class ServerinfoComponent implements OnInit {
-  displayedColumns: string[] = ['name','userName','password','serverInfoId'];
+export class ConnectionComponent implements OnInit {
+  displayedColumns: string[] = ['name','phoneNumber1','emailId1','connectionId'];
   dataSource: MatTableDataSource<any>; 
 
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
@@ -105,7 +92,7 @@ export class ServerinfoComponent implements OnInit {
 
  
   model: any = {};
-  serverinfo:ServerInfo;
+  connection:Connection;
   public add=false
   public dataList : any;
   dialogConfig = new MatDialogConfig();
@@ -118,7 +105,7 @@ export class ServerinfoComponent implements OnInit {
     private alertService: AlertService,
     ) { 
 
-      this.alexService.loadServerinfo()
+      this.alexService.loadConnection()
       .subscribe(
           data => {
           this.dataList = data;
@@ -140,7 +127,7 @@ export class ServerinfoComponent implements OnInit {
 
   openfilter(): void {
    
-      const dialogRef = this.dialog.open(AddServerInfo, {
+      const dialogRef = this.dialog.open(AddConnection, {
         
          width: '60%',
   //  data: {name: this.name, animal: this.animal}
@@ -162,7 +149,7 @@ export class ServerinfoComponent implements OnInit {
  
   refresh() {
     console.log("before calling...ngOnInit......"); 
-    this.alexService.loadServerinfo()
+    this.alexService.loadConnection()
       .subscribe(
           data => {
               this.dataList = data;
@@ -184,7 +171,7 @@ export class ServerinfoComponent implements OnInit {
     'top': '1000',
     left: '100'
   };
-  this.dialog.open(AddServerInfo,{
+  this.dialog.open(AddConnection,{
     height: '80%', 
   })
   .afterClosed().subscribe(result => {
@@ -194,14 +181,14 @@ export class ServerinfoComponent implements OnInit {
 } 
  
 public viewData(issueId:number){
-console.log("JobportalComponent Id--->"+issueId);
+console.log("Connection Component Id--->"+issueId);
   this.dialogConfig.disableClose = true;
   this.dialogConfig.autoFocus = true;
   this.dialogConfig.position = {
     'top': '1000',
     left: '100'
   };
-  this.dialog.open(ViewServerInfo,{
+  this.dialog.open(ViewConnection,{
   //  data: {dialogTitle: "hello", dialogText: "text"},
     data: issueId,
     height: '80%'

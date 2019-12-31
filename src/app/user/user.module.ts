@@ -66,7 +66,7 @@ const routes1: Routes = [
   declarations: [
     Filter,AddissuesComponent,ViewissuesComponent, DatatableissuesComponent ],
   imports: [
-    AlertModule,
+    
     CommonModule,
     FormsModule,
     MatFormFieldModule,
@@ -121,7 +121,7 @@ const routes1: Routes = [
     
   ],
   entryComponents: [Filter],
-  providers: [UserService,AlertService],
+  providers: [UserService],
 
 })
 export class UserModule { }
