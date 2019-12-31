@@ -29,26 +29,34 @@ export class AddBank {
     private alertService: AlertService,
     public dialogRef: MatDialogRef<AddBank>,
     ) {
-      const country = '../../country.json';
-      const priority = "../../priority.json";
-      this.countryList=country;
-      this.priorityList=priority;
+      this.countryList = require("../../country.json");
+
     }
 
-  onNoClick(): void {
+    close() {
     this.dialogRef.close();
   }
 
   saveBank(){
     console.log("save bank");
-
     this.model.createdPerson=localStorage.getItem("currentusername");
     this.model.currentUser=localStorage.getItem('currentusername');
     console.log('............controller save bank....');
     this.alexService.saveBank(this.model)
               .subscribe(
-                  data => {
-                      console.log('return value -->'+data);
+                  res => {
+                    console.log('............1 ....');
+                    console.log('return value -->'+res.status);
+                      if(res.status ="success"){
+                        console.log('successfully updated...');
+                        this.dialogRef.close();
+                        this.alertService.success("Bank info successfully saved ");
+                        setTimeout(() => {
+                         this.alertService.clear();
+                       }, 2000);
+         
+                      }
+                 
                                    
                   },
                   error => {
@@ -97,7 +105,7 @@ export class ViewBank {
      );
     }
 
-  onNoClick(): void {
+  close(): void {    
     this.dialogRef.close();
   }
 

@@ -138,3 +138,21 @@ hr {
   /* margin-bottom: 10px; */
   margin: auto;
 }  
+
+#btnsave{
+  background-color:green;
+
+}
+#btndel{
+  background-color: red;
+
+}
+
+#btnupdate{
+  background-color:green;
+
+}
+
+#btnclose{
+  background-color:black;
+}

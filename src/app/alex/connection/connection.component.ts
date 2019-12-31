@@ -25,22 +25,52 @@ export class AddConnection {
   model: any = {};
   connection:Connection; 
   constructor(
+    private alexService: AlexService,
+    private alertService: AlertService,
     public dialogRef: MatDialogRef<AddConnection>,
     ) {
-      const country = '../../country.json';
-      const priority = "../../priority.json";
-      this.countryList=country;
-      this.priorityList=priority;
+      this.countryList = require("../../country.json");
     }
 
-  onNoClick(): void {
+  
+  saveConnection(){
+    console.log("save saveConnection");
+    this.model.createdPerson=localStorage.getItem("currentusername");
+    this.model.currentUser=localStorage.getItem('currentusername');
+    console.log('............controller save bank....');
+    this.alexService.saveConnection(this.model)
+              .subscribe(
+                  res => {
+                    console.log('............1 ....');
+                    console.log('return value -->'+res);
+                      if(res == "success"){
+                        console.log('successfully updated...');
+                        this.dialogRef.close();
+                        this.alertService.success("Contact Info Successfully saved");
+                        setTimeout(() => {
+                         this.alertService.clear();
+                       }, 2000);
+         
+                      }
+                 
+                                   
+                  },
+                  error => {
+                    alert("Server error...");
+  
+                  });
     this.dialogRef.close();
+    
   }
 
-  saveConnection(){
-    console.log("saveConnection");
-      }
+  close() {
+    this.dialogRef.close();
+  }
 }
+
+
+
+
 
 
 
@@ -56,6 +86,7 @@ export class ViewConnection {
   connection:Connection; 
   constructor(
     private alexService: AlexService,
+    private alertService: AlertService,
     public dialogRef: MatDialogRef<ViewConnection>,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
@@ -76,7 +107,63 @@ export class ViewConnection {
          }
      );
 }
+
+close() {
+  this.dialogRef.close();
 }
+
+editRemove(value:string) {
+  if(value=="PUT"){
+   console.log("Connection Update  ID --->"+this.model.connectionId);
+   this.alexService.updateConnection(this.model)
+   .subscribe(
+       data => {
+         console.log('update output-->'+data.status);
+
+           if(data.status=="success"){
+             console.log('successfully updated...');
+             this.dialogRef.close();
+             this.alertService.success("Contact info successfully updated ");
+             setTimeout(() => {
+              this.alertService.clear();
+            }, 2000);
+
+           }
+      
+           
+       },
+       error => {
+         this.dialogRef.close();
+           alert('Udate Error !!!!');
+       }
+   );
+
+  }
+  if(value=="DELETE"){
+   console.log("Connection ID --->"+this.model.connectionId);
+   this.alexService.removeConnection(this.model.connectionId)
+   .subscribe(
+       data => {
+        // this.dialogRef.close();
+        this.dialogRef.close();
+        console.log('successfully deleted...');
+        this.alertService.success("Contact info successfully Removed..");
+        setTimeout(() => {
+          this.alertService.clear();
+        }, 2000);
+
+       },
+       error => {
+           alert('Error !!!!');
+       }
+   );
+
+
+  }
+  this.dialogRef.close();
+}
+}
+
 @Component({
   selector: 'app-connection',
   templateUrl: './connection.component.html',

@@ -5,8 +5,8 @@ import { Portal, Bank } from '../_models';
 @Injectable()
 export class AlexService {    
 
-//private commonURL = 'http://35.160.115.237:8093/mynrg-server/';
-  private commonURL = 'http://localhost:8093/mynrg-server/';
+private commonURL = 'http://35.160.115.237:8093/mynrg-server/';
+ // private commonURL = 'http://localhost:8093/mynrg-server/';
 
 constructor(private http: HttpClient) { }
 
@@ -44,7 +44,7 @@ myPortaldelete(id:number){
 // Save  
 saveConnection(portal: Portal){
     console.log('service....');
-    return this.http.post<Portal>(this.commonURL+'connection/save',portal);
+    return this.http.post<String>(this.commonURL+'connection/save',portal);
 }
 
 // Load 
