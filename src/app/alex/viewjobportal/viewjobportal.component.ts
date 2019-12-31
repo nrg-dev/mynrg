@@ -61,10 +61,10 @@ public countryList;
               if(data.status=="success"){
                 console.log('successfully updated...');
                 this.dialogRef.close();
-                this.alertService.success("successfully updated");
+                this.alertService.success("Job Portal Successfully updated");
                 setTimeout(() => {
-                  this.alertService.success("");
-                }, 1000);
+                  this.alertService.clear();
+                }, 2000);
 
               }
          
@@ -85,6 +85,10 @@ public countryList;
            // this.dialogRef.close();
            this.dialogRef.close();
            console.log('successfully deleted...');
+           this.alertService.success("Job Portal is successfully removed");
+           setTimeout(() => {
+            this.alertService.clear();
+          }, 2000);
           },
           error => {
               alert('Error !!!!');

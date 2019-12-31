@@ -4,6 +4,7 @@ import { AlexService } from '../alex.service';
 import { Router } from '@angular/router';
 import { Portal } from 'src/app/_models';
 import { Observable } from 'rxjs';
+import { AlertService } from 'src/app/alert/alert.service';
 //import SampleJson from '../../country.json';
 
 @Component({
@@ -17,6 +18,7 @@ export class AddjobportalComponent implements OnInit {
   portal:Portal; 
   constructor(
     private router: Router,
+    private alertService: AlertService,
     private alexService: AlexService,
     private dialogRef: MatDialogRef<AddjobportalComponent>,
   ) { }
@@ -47,9 +49,14 @@ export class AddjobportalComponent implements OnInit {
                           console.log('If User Exits');
 
                    //   }
-  
-                    
+                   console.log('successfully deleted...');
+                   this.alertService.success("Job Portal is successfully saved");
+                   setTimeout(() => {
+                    this.alertService.clear();
+                  }, 2000);
                   },
+                    
+                 
                   error => {
                     alert("Server error...");
   
