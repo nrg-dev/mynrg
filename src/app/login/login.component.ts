@@ -20,12 +20,15 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    console.log("login and logout...");
    //document.getElementById('id01').style.display='block'";
    //document.getElementById('id01').style.display='block';
    this.alertService.clear();
 
     this.model.currentusername='';
     this.model.currentpassword='';
+    localStorage.setItem('currentusername',null);
+    localStorage.setItem('currentpassword',null);
   }
 
   onClickSubmit(){

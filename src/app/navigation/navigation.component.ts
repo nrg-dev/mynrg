@@ -67,79 +67,84 @@ showToggle: string;
 
    this.username=localStorage.getItem("currentusername");
    this.password=localStorage.getItem("currentpassword");
+if(this.username!=null || this.username!="") { 
+  if(this.username=="admin" && this.password=="admin@123"){
+    //admin login
+   this.menuItems = [
+     new MenuItem("DashBoard","/landingpage"),
+     new MenuItem("Reports","employeelist"),
+     new MenuItem("Issues","datatableissues"),
 
-   if(this.username=="admin" && this.password=="admin@123"){
-     //admin login
-    this.menuItems = [
-      new MenuItem("DashBoard","/landingpage"),
-      new MenuItem("Reports","employeelist"),
-      new MenuItem("Issues","datatableissues"),
+     new MenuItem("Log Out","logout"),
+     new MenuItem("",""),
 
-      new MenuItem("Log Out","logout"),
-      new MenuItem("",""),
-
-    ]
-
-
-    this.menuItemsIcons = [
-      new MenuItem("./assets/images/menu.png","/landingpage"),
-      new MenuItem("./assets/images/menu.png","/landingpage"),
-      new MenuItem("./assets/images/menu.png","/landingpage"),
-      new MenuItem("./assets/images/logout.png","login"),
-      new MenuItem('./assets/images/null.png',""),
+   ]
 
 
-    ]
-   }
-   if(this.username=="alex" && this.password=="alex@123"){
- 
-    // Alex login
-    this.menuItems = [
-      new MenuItem("DashBoard","/landingpage"),
-      new MenuItem("Job Poral","jobportal"),
-      new MenuItem("Issues","datatableissues"),
-      new MenuItem("Server Info","serverinfo"),
-      new MenuItem("My Contacts","connection"),
-      new MenuItem("My Bank","bank"),
-
-      new MenuItem("Log Out","logout"),
-      new MenuItem("",""),
-
-    ]
+   this.menuItemsIcons = [
+     new MenuItem("./assets/images/menu.png","/landingpage"),
+     new MenuItem("./assets/images/menu.png","/landingpage"),
+     new MenuItem("./assets/images/menu.png","/landingpage"),
+     new MenuItem("./assets/images/logout.png","login"),
+     new MenuItem('./assets/images/null.png',""),
 
 
-    this.menuItemsIcons = [
-      new MenuItem("./assets/images/menu.png","/landingpage"),
-      new MenuItem("./assets/images/menu.png","/landingpage"),
-      new MenuItem("./assets/images/menu.png","/landingpage"),
-      new MenuItem("./assets/images/menu.png","/landingpage"),
-      new MenuItem("./assets/images/menu.png","/landingpage"),
-      new MenuItem("./assets/images/menu.png","/landingpage"),
-      new MenuItem("./assets/images/logout.png","login"),
-      new MenuItem('./assets/images/null.png',""),
-
-
-    ]
+   ]
   }
+  if(this.username=="alex" && this.password=="alex@123"){
 
-  if(this.username=="user" && this.password=="user"){
-    // User login
-    this.menuItems = [
-      new MenuItem("DashBoard","/landingpage"),
-      new MenuItem("Issues","datatableissues"),
-      new MenuItem("Log Out","logout"),
-      new MenuItem("",""),
+   // Alex login
+   this.menuItems = [
+     new MenuItem("DashBoard","/landingpage"),
+     new MenuItem("Job Poral","jobportal"),
+     new MenuItem("Issues","datatableissues"),
+     new MenuItem("Server Info","serverinfo"),
+     new MenuItem("My Contacts","connection"),
+     new MenuItem("My Bank","bank"),
 
-    ]
-    this.menuItemsIcons = [
-      new MenuItem("./assets/images/menu.png","/landingpage"),
-      new MenuItem("./assets/images/menu.png","employeelist"),
-      new MenuItem("./assets/images/logout.png","login"),
-      new MenuItem('./assets/images/null.png',""),
+     new MenuItem("Log Out","logout"),
+     new MenuItem("",""),
+
+   ]
 
 
-    ]
-  }
+   this.menuItemsIcons = [
+     new MenuItem("./assets/images/menu.png","/landingpage"),
+     new MenuItem("./assets/images/menu.png","/landingpage"),
+     new MenuItem("./assets/images/menu.png","/landingpage"),
+     new MenuItem("./assets/images/menu.png","/landingpage"),
+     new MenuItem("./assets/images/menu.png","/landingpage"),
+     new MenuItem("./assets/images/menu.png","/landingpage"),
+     new MenuItem("./assets/images/logout.png","login"),
+     new MenuItem('./assets/images/null.png',""),
+
+
+   ]
+ }
+
+ if(this.username=="user" && this.password=="user"){
+   // User login
+   this.menuItems = [
+     new MenuItem("DashBoard","/landingpage"),
+     new MenuItem("Issues","datatableissues"),
+     new MenuItem("Log Out","logout"),
+     new MenuItem("",""),
+
+   ]
+   this.menuItemsIcons = [
+     new MenuItem("./assets/images/menu.png","/landingpage"),
+     new MenuItem("./assets/images/menu.png","employeelist"),
+     new MenuItem("./assets/images/logout.png","login"),
+     new MenuItem('./assets/images/null.png',""),
+
+
+   ]
+ }
+}
+else{
+  alert("Pls login");
+}
+   
 
 
    

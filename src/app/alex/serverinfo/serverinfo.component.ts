@@ -184,25 +184,45 @@ export class ServerinfoComponent implements OnInit {
     private alertService: AlertService,
     ) { 
 
-      this.alexService.loadServerinfo()
-      .subscribe(
-          data => {
-          this.dataList = data;
-          this.dataSource = new MatTableDataSource(this.dataList);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
- 
-         },
-          error => {
-              alert('Error !!!!');
-          }
-      );
+      if(localStorage.getItem("currentusername")!=null
+      ) { 
+       
+        this.alexService.loadServerinfo()
+        .subscribe(
+            data => {
+            this.dataList = data;
+            this.dataSource = new MatTableDataSource(this.dataList);
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+   
+           },
+            error => {
+                alert('Error !!!!');
+            }
+        );
+      }
+      else{
+        this.router.navigate(['/login']);
+  
+      }
+
+     
 
 
   }
 
   ngOnInit() {
-    this.refresh();
+
+console.log("username"+localStorage.getItem("currentusername"));
+    if(localStorage.getItem("currentusername")!=null
+    ) { 
+      this.refresh();
+
+    }
+    if(localStorage.getItem("currentusername")==null){
+      this.router.navigate(['/login']);
+
+    }
   }
 
   openfilter(): void {
