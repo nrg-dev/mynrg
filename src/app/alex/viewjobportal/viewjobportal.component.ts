@@ -39,7 +39,7 @@ export class ViewjobportalComponent implements OnInit {
 
 public countryList;
   ngOnInit() {
-    const country = require("../../country.json");
+    const country = require("../../../assets/country.json");
     this.countryList=country;
   }
 

@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { Portal } from 'src/app/_models';
 import { Observable } from 'rxjs';
 import { AlertService } from 'src/app/alert/alert.service';
-//import SampleJson from '../../country.json';
 
 @Component({
   selector: 'app-addjobportal',
@@ -24,10 +23,7 @@ export class AddjobportalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   /// alert(SampleJson);
-    //console.log(SampleJson.values);
-  const country = require("../../country.json");
-   // const country = "/src/app/country.json";
+    const country = require("../../../assets/country.json");
     this.countryList=country;
      
   }

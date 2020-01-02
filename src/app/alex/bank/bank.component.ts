@@ -29,8 +29,7 @@ export class AddBank {
     private alertService: AlertService,
     public dialogRef: MatDialogRef<AddBank>,
     ) {
-      this.countryList = require("../../country.json");
-
+      this.countryList = require("../../../assets/country.json");
     }
 
     close() {
@@ -87,10 +86,8 @@ export class ViewBank {
     public dialogRef: MatDialogRef<ViewBank>,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
-      const country = '../../country.json';
-      const priority = "../../priority.json";
+      const country = require("../../../assets/country.json");
       this.countryList=country;
-      this.priorityList=priority;
       this.alexService.getBank(this.data)
      .subscribe(
          data => {
@@ -209,6 +206,8 @@ export class BankComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refresh();
+
   }
 
   filter(): void {

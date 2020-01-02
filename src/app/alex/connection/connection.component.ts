@@ -21,7 +21,6 @@ import { AlexService } from '../alex.service';
 })
 export class AddConnection {
   countryList:any;
-  priorityList:any;
   model: any = {};
   connection:Connection; 
   constructor(
@@ -29,7 +28,8 @@ export class AddConnection {
     private alertService: AlertService,
     public dialogRef: MatDialogRef<AddConnection>,
     ) {
-      this.countryList = require("../../country.json");
+      this.countryList =  require("../../../assets/country.json");
+
     }
 
   
@@ -81,7 +81,6 @@ export class AddConnection {
 })
 export class ViewConnection {
   countryList:any;
-  priorityList:any;
   model: any = {};
   connection:Connection; 
   constructor(
@@ -90,10 +89,8 @@ export class ViewConnection {
     public dialogRef: MatDialogRef<ViewConnection>,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
-      const country = '../../country.json';
-      const priority = "../../priority.json";
+      const country = require("../../../assets/country.json");
       this.countryList=country;
-      this.priorityList=priority;
       this.alexService.getConnection(this.data)
      .subscribe(
          data => {
@@ -212,12 +209,11 @@ export class ConnectionComponent implements OnInit {
   ngOnInit() {
   }
 
-  openfilter(): void {
+  filter(): void {
    
       const dialogRef = this.dialog.open(AddConnection, {
-        
+      
          width: '60%',
-  //  data: {name: this.name, animal: this.animal}
   });
 
   dialogRef.afterClosed().subscribe(result => {

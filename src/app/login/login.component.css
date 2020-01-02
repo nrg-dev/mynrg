@@ -22,7 +22,7 @@
 
 #black-color{
   height: auto;
-  margin-top: 170px;
+  /*margin-top: 170px;*/
 
    /* Full height    height: 100%;
 */
@@ -163,7 +163,7 @@ span.psw {
     /*background-color: #33495c;*/
     height: auto;
     width: 708px;
-    margin-top: 125px;
+   /* margin-top: 125px; */
     margin-left: -200px;
   }
 }
@@ -172,8 +172,8 @@ span.psw {
     /*background-color: #33495c;*/
     height: auto;
     width: 800px;
-    margin-top: 130px;
-    margin-left: -223px;
+   /* margin-top: 125px; */
+   margin-left: -223px;
   }
 }
 @media (min-width: 375px) and (max-width: 409px) {
@@ -181,17 +181,17 @@ span.psw {
     /*background-color: #33495c;*/
     height: auto;
     width: 845px;
-    margin-top: 135px;
-    margin-left: -238px;
+   /* margin-top: 125px; */
+   margin-left: -238px;
   }
 }
 @media (min-width: 410px) and (max-width: 470px) {
   #black-color{
-    background-color: #33495c;
+    /*background-color: #33495c;*/
     height: auto;
     width: 880px;
-    margin-top: 150px;
-    margin-left: -238px;
+   /* margin-top: 125px; */
+   margin-left: -238px;
   }
 }
 @media (min-width: 471px) and (max-width: 530px) {
@@ -199,8 +199,9 @@ span.psw {
     /*background-color: #33495c;*/
     height: auto;
     width: 960px;
-    margin-top: 170px;
-    margin-left: -238px;
+   /* margin-top: 125px; */
+   /* margin-top: 125px; */
+   margin-left: -238px;
   }
 }
 @media (min-width: 531px) and (max-width: 539px) {
@@ -208,7 +209,6 @@ span.psw {
     /*background-color: #33495c;*/
     height: auto;
     width: 945px;
-    margin-top: 170px;
     margin-left: -210px;
   }
 }
@@ -217,7 +217,6 @@ span.psw {
     /*background-color: #33495c;*/
     height: auto;
     width: 1025px;
-    margin-top: 170px;
     margin-left: -210px;
   }
 }
@@ -226,7 +225,6 @@ span.psw {
     /*background-color: #33495c;*/
     height: auto;
     width: 1010px;
-    margin-top: 170px;
     margin-left: -226px;
   }
 }
@@ -235,7 +233,6 @@ span.psw {
     /*background-color: #33495c;*/
     height: auto;
     width: 1010px;
-    margin-top: 170px;
     margin-left: -110px;
   }
 }
@@ -243,21 +240,21 @@ span.psw {
   #black-color{
     /*background-color: #33495c;*/
     height: auto;
-    margin-top: 170px;
+/*    margin-top: 170px; */
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){
   #black-color{
     /*background-color: #33495c;*/
     height: auto;
-    margin-top: 170px;
+   /* margin-top: 170px;*/
   }
 }
 
 @media (min-width: 1281px) and (max-width: 1380px) {
   #logo-img{
     width: 150px;
-    margin-top: -30px;
+   /* margin-top: -30px;*/
     margin-left: auto;
     margin-right: auto;
   }
@@ -268,7 +265,7 @@ span.psw {
 @media (min-width: 1381px) and (max-width:2051px) {
   #logo-img{
     width: 150px;
-    margin-top: -30px;
+    /*margin-top: -30px;*/
     margin-left: auto;
     margin-right: auto;
   }
@@ -279,7 +276,7 @@ span.psw {
 @media (min-width:2052px) and (max-width:2732px){
   #logo-img{
     width: 150px;
-    margin-top: -30px;
+    /*margin-top: -30px;*/
     margin-left: auto;
     margin-right: auto;
   }
@@ -290,7 +287,7 @@ span.psw {
 @media (min-width:2733px) and (max-width:4102px){
   #logo-img{
     width: 150px;
-    margin-top: -30px;
+    /*margin-top: -30px;*/
     margin-left: auto;
     margin-right: auto;
   }
@@ -301,7 +298,7 @@ span.psw {
 @media (min-width:4103px) and (max-width:5464px){
   #logo-img{
     width: 150px;
-    margin-top: -30px;
+   /* margin-top: -30px;*/
     margin-left: auto;
     margin-right: auto;
   }

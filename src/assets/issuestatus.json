@@ -1,0 +1,12 @@
+[
+   {  "name": "Open"},
+   {  "name": "To Do"},
+   {  "name": "In Progress"},
+   {  "name": "In Review"},
+   {  "name": "Under review"},
+   {  "name": "Resolved"},
+   {  "name": "Closed"},
+   {  "name": "Cancelled"},
+   {  "name": "Rejected"}
+]
+

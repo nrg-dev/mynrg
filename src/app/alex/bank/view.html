@@ -1,10 +1,9 @@
 <h3>View / Modify Bank</h3>
-
-<form name="form">
+<hr>
+<form name="form" class="modal-content">
 <div class="container">
 
 
-  <div class="row">
     <label for="bankName"><b>Bank Name</b></label>
     <input type="text" [(ngModel)]="model.bankName" #bankName="ngModel"  name="bankName" required>
   
@@ -42,6 +41,10 @@
       <label for="netbankingPassword"><b>Net Banking Password</b></label>
       <input type="text" [(ngModel)]="model.netbankingPassword" #netbankingPassword="ngModel" name="netbankingPassword" required>
     
+      <label for="notes"><b>Notes</b></label>  
+      <textarea  [(ngModel)]="model.notes" #notes="ngModel" name="notes"></textarea>
+
+   
 
       <label for="bankCountry"><b>Country</b></label>
       <select placeholder="Choose" [(ngModel)]="model.bankCountry" #bankCountry="ngModel" id="bankCountry" name="priority">
@@ -49,14 +52,12 @@
       </select>
      
      
-    </div>
     
        <button type="submit" id="btnupdate" (click)="editRemove('PUT')" value="Save"> Update </button>
         <button type="submit" id="btndel" (click)="editRemove('DELETE')"> Delete </button>
         <button id="btnclose" class="mat-raised-button"(click)="close()">Cancel</button>
 
-    <div style="height: 20px;" class="row"></div>
+      </div>
 
-  </div>
 
   </form> 

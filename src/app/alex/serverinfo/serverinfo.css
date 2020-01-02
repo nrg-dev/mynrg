@@ -46,7 +46,10 @@ button {
   background-color:black;
 
 }
+#btndel{
+  background-color: red;
 
+}
 button:hover {
   opacity:1;
 }

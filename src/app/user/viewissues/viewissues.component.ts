@@ -18,6 +18,7 @@ export class ViewissuesComponent implements OnInit {
   issue:Issue;
   priorityList:any;
   countryList:any;
+  statusList:any;
   dialogConfig = new MatDialogConfig();
 
   constructor(
@@ -30,11 +31,11 @@ export class ViewissuesComponent implements OnInit {
   ) {  
 
 //    const priority = require("../../priority.json");
-    const priority = "../../priority.json";
+    const priority = require("../../../assets/priority.json");
+
     this.priorityList=priority;
-        //  console.log(" ViewjobportalComponent ID  --->"+this.data);
-     // console.log("data 2--->"+this.data.dialogText);
-      
+
+       
      this.userService.get(this.data)
      .subscribe(
          data => {
@@ -51,9 +52,10 @@ export class ViewissuesComponent implements OnInit {
      }
   ngOnInit() {
     console.log(this.data);
-  //  const country = require("../../country.json");
-    const country = '../../country.json';
+    const country = require("../../../assets/country.json");
     this.countryList=country;
+    const status = require("../../../assets/issuestatus.json");
+    this.statusList=status;
   }
 
   close() {

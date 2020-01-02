@@ -21,7 +21,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./jobportal.component.css']
 })
 export class JobportalComponent implements OnInit {
-  displayedColumns: string[] = ['portalName', 'username', 'password','phoneNumber1','emailId1','action'];
+  displayedColumns: string[] = ['id','portalName','country', 'username', 'password','phoneNumber1','emailId1','action'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
@@ -118,7 +118,7 @@ console.log("JobportalComponent Id--->"+portalId);
     height: '80%'
   }).afterClosed().subscribe(result => {
    this.refresh();
-
+    
    });;
 }
 

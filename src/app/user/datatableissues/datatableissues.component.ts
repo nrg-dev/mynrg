@@ -29,14 +29,10 @@ export class Filter {
   constructor(
     public dialogRef: MatDialogRef<Filter>,
     ) {
-  //    const country = require("../../country.json");
-      const country = '../../country.json';
-      const priority = "../../priority.json";
-
+      const country = require("../../../assets/country.json");
+      const priority = require("../../../assets/priority.json");
       this.countryList=country;
-      //const priority = require("../../priority.json");
       this.priorityList=priority;
-     // private _jsonURL = 'assets/SampleJson.json';
     }
 
   onNoClick(): void {
@@ -53,7 +49,7 @@ export class Filter {
   styleUrls: ['./datatableissues.component.css']
 })
 export class DatatableissuesComponent implements OnInit {
-  displayedColumns: string[] = ['clientName','issueStatus','priority','issueId'];
+  displayedColumns: string[] = ['issueId2','clientName','issueStatus','priority','issueId'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;

@@ -7,14 +7,21 @@
         <label for="clientName"><b>Clinet Name</b></label>
         <input type="text" [(ngModel)]="model.clientName" #clientName="ngModel" name="clientName" required>
       
-           <label for="priority"><b>Priority </b></label>
-      
+           <label for="priority"><b>Priority </b></label>      
         <select  [(ngModel)]="model.priority" #priority="ngModel" id="priority" name="priority">
-
-            <option *ngFor="let list of priorityList" value="{{list.name}}">{{list.name}}</option>
-    
+            <option *ngFor="let list of priorityList" value="{{list.name}}">{{list.name}}</option>    
           </select>
+         
+          <label for="issueStatus"><b>Status </b></label>      
+          <select  [(ngModel)]="model.issueStatus" #status="ngModel" id="issueStatus" name="issueStatus">
+              <option *ngFor="let list of statusList" value="{{list.name}}">{{list.name}}</option>    
+            </select>
 
+          
+          <label for="country"><b>Country </b></label>      
+          <select  [(ngModel)]="model.country" #country="ngModel" id="country" name="country">
+              <option *ngFor="let list of countryList" value="{{list.name}}">{{list.name}}</option>    
+            </select>
 
   <label for="issueNotes"><b>Issue Desc</b></label>
   <textarea  [(ngModel)]="model.issueNotes" #issueNotes="ngModel" name="issueNotes" required>

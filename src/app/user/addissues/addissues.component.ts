@@ -24,8 +24,8 @@ export class AddissuesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const country = require("../../country.json");
-    const priority = require("../../priority.json");
+    const country = require("../../../assets/country.json");
+    const priority = require("../../../assets/priority.json");    
     this.countryList=country;
     this.priorityList=priority;
   }
@@ -37,7 +37,7 @@ export class AddissuesComponent implements OnInit {
   save() {
     this.model.createdPerson=localStorage.getItem("currentusername");
     this.model.currentUser=localStorage.getItem('currentusername');
-    this.model.issueStatus="New";
+    this.model.issueStatus="Open";
     console.log('............controller save....');
     this.userService.save(this.model)
               .subscribe(

@@ -21,25 +21,45 @@ import { AlexService } from '../alex.service';
 })
 export class AddServerInfo {
   countryList:any;
-  priorityList:any;
   model: any = {};
   serverinfo:ServerInfo; 
   constructor(
+    private alertService: AlertService,
+    private alexService: AlexService,
     public dialogRef: MatDialogRef<AddServerInfo>,
-    ) {
-      const country = '../../country.json';
-      const priority = "../../priority.json";
+    ) 
+    {
+      const country = require("../../../assets/country.json");
       this.countryList=country;
-      this.priorityList=priority;
     }
 
-  onNoClick(): void {
+ 
+  saveServerinfo() {
+    this.model.createdPerson=localStorage.getItem("currentusername");
+    this.model.updatedPerson=localStorage.getItem("currentusername");    
+    this.model.currentUser=localStorage.getItem('currentusername');
+    console.log('............controller saveServerinfo....');
+    this.alexService.saveServerinfo(this.model)
+              .subscribe(
+                  data => {
+                   console.log('return value -->'+data);
+                   console.log('successfully saved...');
+                   this.alertService.success("Server Info is successfully saved");
+                   setTimeout(() => {
+                    this.alertService.clear();
+                  }, 2000);
+                  },
+                    
+                 
+                  error => {
+                    alert("Server error...");
+  
+                     // this.otherErrordialog = 'block';
+                     // this.loading = false;
+                  });
     this.dialogRef.close();
-  }
+}
 
-  saveServerinfo(){
-
-  }
 }
 
 
@@ -51,7 +71,6 @@ export class AddServerInfo {
 })
 export class ViewServerInfo {
   countryList:any;
-  priorityList:any;
   model: any = {};
   serverinfo:ServerInfo; 
   constructor(
@@ -60,18 +79,16 @@ export class ViewServerInfo {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ViewServerInfo>,
     ) {
-      const country = '../../country.json';
-      const priority = "../../priority.json";
-      this.countryList=country;
-      this.priorityList=priority;
+      const country = require("../../../assets/country.json");
 
-      console.log("  ID  --->"+this.data);      
+      this.countryList=country;
+
+    //  console.log("  ID  --->"+this.data);      
       this.alexService.getServerinfo(this.data)
       .subscribe(
           data => {
               this.model = data;
-              console.log(" Id-->"+this.model.portalId);
- 
+              console.log("Particular Server Info ID -->"+this.model.serverInfoId); 
               
           },
           error => {
@@ -81,7 +98,7 @@ export class ViewServerInfo {
 
     }
 
-  onNoClick(): void {
+  close(): void {
     this.dialogRef.close();
   }
 
@@ -89,7 +106,7 @@ export class ViewServerInfo {
   editRemove(value:string) {
     if(value=="PUT"){
     // alert(" PUT ID --->"+value);
-     console.log("Update  ID --->"+this.model.serverInfoId);
+     console.log("Server Info  ID --->"+this.model.serverInfoId);
      this.alexService.updateServerinfo(this.model)
      .subscribe(
          data => {
@@ -145,7 +162,7 @@ export class ViewServerInfo {
   styleUrls: ['./serverinfo.component.css']
 })
 export class ServerinfoComponent implements OnInit {
-  displayedColumns: string[] = ['name','userName','password','serverInfoId'];
+  displayedColumns: string[] = ['id','name','country','userName','password','serverInfoId'];
   dataSource: MatTableDataSource<any>; 
 
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;
@@ -185,6 +202,7 @@ export class ServerinfoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refresh();
   }
 
   openfilter(): void {
@@ -210,7 +228,7 @@ export class ServerinfoComponent implements OnInit {
   }
  
   refresh() {
-    console.log("before calling...ngOnInit......"); 
+    console.log("------------ inside refresh-------------"); 
     this.alexService.loadServerinfo()
       .subscribe(
           data => {
@@ -242,8 +260,8 @@ export class ServerinfoComponent implements OnInit {
     
 } 
  
-public viewData(issueId:number){
-console.log("JobportalComponent Id--->"+issueId);
+public viewData(serverInfoId:number){
+console.log("Sever Info View Id--->"+serverInfoId);
   this.dialogConfig.disableClose = true;
   this.dialogConfig.autoFocus = true;
   this.dialogConfig.position = {
@@ -252,7 +270,7 @@ console.log("JobportalComponent Id--->"+issueId);
   };
   this.dialog.open(ViewServerInfo,{
   //  data: {dialogTitle: "hello", dialogText: "text"},
-    data: issueId,
+    data: serverInfoId,
     height: '80%'
   }).afterClosed().subscribe(result => {
    this.refresh();

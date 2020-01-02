@@ -5,7 +5,7 @@
     
       <button  (click)="addNew()" style="width:auto;">ADD</button>
       &nbsp;&nbsp;
-      <button  (click)="openfilter()" style="width:auto;">Filter</button> &nbsp;
+    <!--  <button  (click)="filter()" style="width:auto;">Filter</button> &nbsp; -->
     
       <!--<button  (click)="refresh()" style="width:auto;">Refresh</button> &nbsp;
       -->
@@ -15,7 +15,8 @@
              <div class="col-lg-3"></div>
              <div class="col-lg-12" > 
     
-    
+              <mat-toolbar >My Contacts Details </mat-toolbar>
+
     
               <mat-form-field>
                 <input  matInput (keyup)="applyFilter($event.target.value)" placeholder="Search here">

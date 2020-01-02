@@ -1,5 +1,4 @@
 
-<div class="container">
 
   <h1>Add New Bank</h1>
   <p>Please fill in this form to create an Bank.</p>
@@ -39,34 +38,33 @@
     
       <label for="bankEmailid"><b>Email </b></label>
       <input type="text" [(ngModel)]="model.bankEmailid" #bankEmailid="ngModel" 
-      placeholder="Enter Email " name="emailId1" required>
+      placeholder="Enter Email " name="bankEmailid" required>
     
-      <label for="emailId2"><b>Email 2</b></label>
-      <input type="text" [(ngModel)]="model.emailId2" #url="ngModel" placeholder="Enter Email 2" name="emailId2" required>
     
       <label for="bankPhone"><b>Phone Number </b></label>
       <input type="text" [(ngModel)]="model.bankPhone" #bankPhone="ngModel"
        placeholder="Enter Phone Number " name="bankPhone" required>
     
-      <label for="netbankingUsername"><b>Phone Number 2</b></label>
+      <label for="netbankingUsername"><b>Net Banking User Name</b></label>
       <input type="text" [(ngModel)]="model.netbankingUsername" #netbankingUsername="ngModel" 
       placeholder="Enter Net banking username" name="netbankingUsername" required>
     
 
-      <label for="netbankingPassword"><b>URL</b></label>
+      <label for="netbankingPassword"><b>Net Banking Password </b></label>
       <input type="text" [(ngModel)]="model.netbankingPassword" #netbankingPassword="ngModel" 
       placeholder="Enter Net Banking Password" name="netbankingPassword" required>
       
-      <label for="debitCardAtmPin"><b>ATM Pin</b></label>
-      <input type="text" [(ngModel)]="model.debitCardAtmPin" #debitCardAtmPin="ngModel" 
-      placeholder="Enter Debti Card ATM Pin Name" name="debitCardAtmPin" required>
-     
-      <label for="debitCardNumber"><b>PASSWORD</b></label>
+      <label for="debitCardNumber"><b>Debit Card Number</b></label>
       <input type="text" [(ngModel)]="model.debitCardNumber" #debitCardNumber="ngModel" 
       placeholder="Enter Debit Card Number" name="debitCardNumber" required>
     
       
-      <label for="email"><b>Notes</b></label>
+      <label for="debitCardAtmPin"><b>Debit Card Pin</b></label>
+      <input type="text" [(ngModel)]="model.debitCardAtmPin" #debitCardAtmPin="ngModel" 
+      placeholder="Enter Debti Card ATM Pin Name" name="debitCardAtmPin" required>
+     
+      
+      <label for="notes"><b>Notes</b></label>
       <textarea id="notes" [(ngModel)]="model.notes" 
       #notes="ngModel" name="notes" placeholder="Write something.." ></textarea>
 
@@ -76,11 +74,3 @@
 
   </div>
   </form>
-</div>
-<!--
-<mat-dialog-actions>
-  <button class="mat-raised-button"(click)="close()">Close</button>
-  <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
-</mat-dialog-actions>
-
--->

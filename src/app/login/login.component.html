@@ -1,20 +1,6 @@
-<!--<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
--->
-
-<div id="fixed-heder">
-    <div class="fixed-nav-bar">
-            
-      <nav class="navbar navbar-inverse" id="back-colorforheader">
-        <img src="./assets/images/nrg_logo.png"  id="logo-img"/>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                      
-            </div>
-        </nav>
-    </div>
-</div>
-<div id="black-color">
   
-  <form class="modal-content animate" name="form" (ngSubmit)="f.form.valid && onClickSubmit()" #f="ngForm" novalidate>
+  <div id="black-color">
+  <form class="modal-content" name="form" (ngSubmit)="f.form.valid && onClickSubmit()" #f="ngForm" novalidate>
     <div class="container">
         <h2 style="text-align: center;">Login to MY NRG</h2>
 
@@ -45,4 +31,3 @@
     </div>
   </form>
 </div>
-

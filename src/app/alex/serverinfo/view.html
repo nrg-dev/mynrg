@@ -1,9 +1,10 @@
 
   <h3>View / Modify Server Info</h3>
+  <hr>
+
   <form name="form"  class="modal-content">
     <div class="container">
 
-  <div class="row">
     <label for="bankName"><b> Name</b></label>
     <input type="text" [(ngModel)]="model.name" #name="ngModel"  name="name" required>
   
@@ -23,18 +24,28 @@
       <label for="publicHostname"><b>Public Host Name</b></label>
       <input type="text" [(ngModel)]="model.publicHostname" #publicHostname="ngModel" name="publicHostname" required>
     
+      <label for="country"><b>Country</b></label>
+      <select [(ngModel)]="model.country" #country="ngModel" 
+      id="country" name="country">
+        <option *ngFor="let list of countryList" value="{{list.name}}">{{list.name}}</option>
+      </select>
+
+
+      <label for="notes"><b>Notes</b></label>  
+      <textarea  [(ngModel)]="model.notes" #notes="ngModel" name="notes"></textarea>
+
+   
+
       <label for="status"><b>Status</b></label>
       <input type="text" [(ngModel)]="model.status" #status="ngModel" name="status" required>
     
 
      
-    </div>
-    <div style="height: 20px;" class="row"></div>
 
    
     <button type="submit"  id="btnsave" (click)="editRemove('PUT')"  value="Save"> Update </button>     
-    <button id="btnclose" (click)="editRemove('DELETE')"  class="mat-raised-button">Delete</button>      
-    <button id="btnclose" class="mat-raised-button">Cancel</button>
+    <button id="btnclose" id="btndel" (click)="editRemove('DELETE')"  class="mat-raised-button">Delete</button>      
+    <button id="btnclose" (click)="close()"  class="mat-raised-button">Cancel</button>
   </div>
 
   </form>

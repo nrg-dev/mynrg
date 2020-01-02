@@ -9,7 +9,7 @@ import { Issue } from '../_models';
 @Injectable()
 export class UserService {    
 
-   // private commonURLIssues = 'http://localhost:8093/mynrg-server/issues/';
+  //  private commonURLIssues = 'http://localhost:8093/mynrg-server/issues/';
     private commonURLIssues = 'http://35.160.115.237:8093/mynrg-server/issues/';
 
     
