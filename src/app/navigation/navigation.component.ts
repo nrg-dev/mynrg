@@ -33,6 +33,7 @@ showToggle: string;
   //private count=0;
   static showParent: any;
   public username;
+  private password;
   constructor( private router: Router , public route: ActivatedRoute) { 
     //this.count=route.firstChild.children.length;
     
@@ -65,8 +66,9 @@ showToggle: string;
    });
 
    this.username=localStorage.getItem("currentusername");
+   this.password=localStorage.getItem("currentpassword");
 
-   if(localStorage.getItem("currentusername")=="admin"){
+   if(this.username=="admin" && this.password=="admin@123"){
      //admin login
     this.menuItems = [
       new MenuItem("DashBoard","/landingpage"),
@@ -89,7 +91,7 @@ showToggle: string;
 
     ]
    }
-   if(localStorage.getItem("currentusername")=="alex"){
+   if(this.username=="alex" && this.password=="alex@123"){
  
     // Alex login
     this.menuItems = [
@@ -120,7 +122,7 @@ showToggle: string;
     ]
   }
 
-  if(localStorage.getItem("currentusername")=="user"){
+  if(this.username=="user" && this.password=="user"){
     // User login
     this.menuItems = [
       new MenuItem("DashBoard","/landingpage"),
