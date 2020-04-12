@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: "http://35.162.40.190:8093/mynrg-server/"
+  apiUrl: "http://35.160.115.237:8093/mynrg-server/"
 
 };
