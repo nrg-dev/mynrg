@@ -27,6 +27,19 @@
   <textarea  [(ngModel)]="model.issueNotes" #issueNotes="ngModel" name="issueNotes" required>
 
   </textarea>
+
+  <fieldset class="form-group">
+
+    <div class="custom-file fileInputProfileWrap">
+        <div class="img-space">
+          
+        <!--  <img [src]="list.cardImageBase64" /> -->
+          <img [src]="transform()">
+        </div>
+
+    </div>
+</fieldset>
+
   <button type="submit" id="btnupdate" (click)="editRemove('PUT')" value="Save"> Update </button>
         <button type="submit" id="btndel" (click)="editRemove('DELETE')"> Delete </button>
 

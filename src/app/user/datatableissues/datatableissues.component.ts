@@ -49,7 +49,7 @@ export class Filter {
   styleUrls: ['./datatableissues.component.css']
 })
 export class DatatableissuesComponent implements OnInit {
-  displayedColumns: string[] = ['issueId2','clientName','issueStatus','priority','issueId'];
+  displayedColumns: string[] = ['issueId2','issueNotes','clientName','issueStatus','priority','issueId'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator,{ static: true }) paginator: MatPaginator;

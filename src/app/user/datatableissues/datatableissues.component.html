@@ -34,6 +34,13 @@
                 <td mat-cell *matCellDef="let row"> {{row.issueId}} </td>
               </ng-container>
             
+              <ng-container matColumnDef="issueNotes">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Issue </th>
+                <td mat-cell *matCellDef="let row"> {{row.issueNotes}} </td>
+              </ng-container>
+
+             
+
               <ng-container matColumnDef="clientName">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Client Name </th>
                 <td mat-cell *matCellDef="let row"> {{row.clientName}} </td>

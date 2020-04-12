@@ -6,6 +6,7 @@ import { UserService } from '../user.service';
 import { AlertComponent } from 'src/app/alert/alert/alert.component';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { AlertService } from 'src/app/alert/alert.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-viewissues',
@@ -25,6 +26,7 @@ export class ViewissuesComponent implements OnInit {
     private userService: UserService,
     private dialog: MatDialog,
     private alertService: AlertService,
+    private sanitizer:DomSanitizer,
 
     public dialogRef: MatDialogRef<ViewissuesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -62,7 +64,9 @@ export class ViewissuesComponent implements OnInit {
      this.dialogRef.close();
    }
 
-
+   transform(){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.model.cardImageBase64);
+   }
    editRemove(value:string) {
      if(value=="PUT"){
      // alert(" PUT ID --->"+value);

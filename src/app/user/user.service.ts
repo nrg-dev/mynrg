@@ -25,7 +25,7 @@ save(issue: Issue){
     console.log('service....');
    // return this.http.post<Issue>(this.commonURLIssues+'save',issue);
     return this.http.post<Issue>(
-        `${environment.apiUrl}${"issuesPath/save"}`,
+        `${environment.apiUrl}${"issues/save"}`,
         issue
       ); 
 }
@@ -34,7 +34,7 @@ save(issue: Issue){
 load(){
     console.log("before calling load");
     //return this.http.get(this.commonURLIssues+'load');
-    return this.http.get(`${environment.apiUrl}${"issuesPath/load"}`);
+    return this.http.get(`${environment.apiUrl}${this.issuesPath+"/load"}`);
 
     console.log("after calling load");
  
@@ -43,7 +43,7 @@ load(){
 // get only one data
 get(id:number){
     //return this.http.get<Issue>(this.commonURLIssues+'get?id='+id);
-    return this.http.get<Issue>(`${environment.apiUrl}${"issuesPath/get"+'?id='+id}`);
+    return this.http.get<Issue>(`${environment.apiUrl}${this.issuesPath+"/get"+'?id='+id}`);
 
 }
 
@@ -52,7 +52,7 @@ get(id:number){
 update(issue: Issue){
    // return this.http.put<Issue>(this.commonURLIssues+'update',issue);
     return this.http.put<Issue>(
-        `${environment.apiUrl}${"issuesPath/update"}`,
+        `${environment.apiUrl}${this.issuesPath+"/update"}`,
         issue
       );
 }
