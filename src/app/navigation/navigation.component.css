@@ -3,7 +3,15 @@
   font-size:medium;*/
   color: white;
 }
-
+#center {
+  margin: auto;
+  padding: 10px;
+  text-align:center;
+  background-color: blue; 
+  width: 130px;
+  height: 100px;
+  margin-right: 1.5em; 
+}
 #outline-none{
   outline: none;
 }
@@ -107,7 +115,9 @@ input[type=text]{
   margin: 0px 0px 0px 0px;
   }
 
-  *{margin: 0;padding:0px}
+  * { margin: 0;}
+
+  /*{margin: 0;padding:0px} */
 
   .header{
       width: 100%;

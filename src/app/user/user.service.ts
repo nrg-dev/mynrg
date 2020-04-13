@@ -31,10 +31,20 @@ save(issue: Issue){
 }
 
 // Load all the data
+reportLoad(){
+  console.log("before calling reportLoad");
+  //return this.http.get(this.commonURLIssues+'load');
+  return this.http.get(`${environment.apiUrl}${"issues/reportLoad"}`);
+  console.log("after calling reportLoad");
+
+}
+
+
+// Load all the data
 load(){
     console.log("before calling load");
     //return this.http.get(this.commonURLIssues+'load');
-    return this.http.get(`${environment.apiUrl}${this.issuesPath+"/load"}`);
+    return this.http.get(`${environment.apiUrl}${"issues/load"}`);
 
     console.log("after calling load");
  
@@ -43,7 +53,7 @@ load(){
 // get only one data
 get(id:number){
     //return this.http.get<Issue>(this.commonURLIssues+'get?id='+id);
-    return this.http.get<Issue>(`${environment.apiUrl}${this.issuesPath+"/get"+'?id='+id}`);
+    return this.http.get<Issue>(`${environment.apiUrl}${"issues/get"+'?id='+id}`);
 
 }
 
@@ -52,7 +62,7 @@ get(id:number){
 update(issue: Issue){
    // return this.http.put<Issue>(this.commonURLIssues+'update',issue);
     return this.http.put<Issue>(
-        `${environment.apiUrl}${this.issuesPath+"/update"}`,
+        `${environment.apiUrl}${"issues/update"}`,
         issue
       );
 }
@@ -61,7 +71,7 @@ update(issue: Issue){
 
 remove(id:number){
     //return this.http.delete<String>(this.commonURLIssues+'remove?id='+id);
-    return this.http.delete<String>(`${environment.apiUrl}${"issuesPath/remove"+'?id='+id}`); 
+    return this.http.delete<String>(`${environment.apiUrl}${"issues/remove"+'?id='+id}`); 
 
 }
 

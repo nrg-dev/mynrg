@@ -1,9 +1,10 @@
 [
    {  "name": "Open"},
-   {  "name": "To Do"},
+   {  "name": "Ready For Development"},
    {  "name": "In Progress"},
+   {  "name": "Development Completed"},
    {  "name": "In Review"},
-   {  "name": "Under review"},
+   {  "name": "Ready For Testing"},
    {  "name": "Resolved"},
    {  "name": "Closed"},
    {  "name": "Cancelled"},

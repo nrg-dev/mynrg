@@ -4,6 +4,7 @@ import { SubMenuItem } from '../subMenuItem.model';
 import { MatSidenav } from '@angular/material/sidenav';
 import { RouterModule, Routes, Router ,ActivatedRoute} from "@angular/router";
 import { BehaviorSubject, Observable } from 'rxjs';
+import { UserService } from '../user/user.service';
  
 @Component({
   selector: 'app-navigation',
@@ -34,7 +35,9 @@ showToggle: string;
   static showParent: any;
   public username;
   private password;
-  constructor( private router: Router , public route: ActivatedRoute) { 
+  constructor( private router: Router , 
+    private userService: UserService,
+    public route: ActivatedRoute) { 
     //this.count=route.firstChild.children.length;
     
     route.url.subscribe(() => {
@@ -50,8 +53,36 @@ showToggle: string;
   getScreenWidth(): Observable<number> {
     return this.screenWidth$.asObservable();
   }
+  key1:number;
+  key2:number;
+  key3:number;
+  key4:number;
+
+  key5:number;
+  key6:number;
+  key7:number;
 
   ngOnInit() {
+
+    console.log("before calling...ngOnInit......"); 
+    this.userService.reportLoad()
+      .subscribe(
+          data => {
+              this.key1=data['key1'];
+              this.key2=data['key3'];
+              this.key3=data['key3'];
+              this.key4=data['key4'];
+              this.key5=data['key5'];
+              this.key6=data['key6'];
+              this.key7=data['key7'];
+
+              console.log("Output-->"+data['key1']);
+         },
+          error => {
+              alert('Error !!!!');
+          }
+      );
+
     this.getScreenWidth().subscribe(width => {
       if (width < 640) {
        this.showToggle = 'show';

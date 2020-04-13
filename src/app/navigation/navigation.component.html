@@ -76,15 +76,125 @@
 <br/>
 <!-- <div *ngIf="notSelected"> -->
     <div *ngIf="route.firstChild.children.length === 0">
+     
+      <h3 style="padding-left: 20px;padding-bottom: 20px;">Issue List by Status</h3>
 
-        <h2>Welcome to 2020 and My NRG is ready now.</h2>
-        Dear Team
-    
-        The new My NRG  is finally ready  here!
+          <div class="row">
+                     
+                               
+        <div class="col-lg-6 col-xl-4">
+            <div class="card mb-3 widget-content bg-premium-dark">
+                <div class="widget-content-wrapper text-white">
+                    <div class="widget-content-left">
+                        <div class="widget-heading">Open</div>
+                        <div class="widget-subheading">Issues Opens</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-warning"><span>{{key1}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-6 col-xl-4">
+          <div class="card mb-3 widget-content bg-premium-dark">
+              <div class="widget-content-wrapper text-white">
+                  <div class="widget-content-left">
+                      <div class="widget-heading">Ready For Development</div>
+                      <div class="widget-subheading">Ready For Development</div>
+                  </div>
+                  <div class="widget-content-right">
+                      <div class="widget-numbers text-warning"><span>{{key2}}</span></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="col-lg-6 col-xl-4">
+        <div class="card mb-3 widget-content bg-premium-dark">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">In Progress</div>
+                    <div class="widget-subheading">Issues In Progress</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-warning"><span>{{key3}}</span></div>
+                </div>
+            </div>
+        </div>
+      </div>
+           
+      
+      <div class="col-lg-6 col-xl-4">
+        <div class="card mb-3 widget-content bg-premium-dark">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">Development Completed</div>
+                    <div class="widget-subheading">Dev Completed</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-warning"><span>{{key4}}</span></div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+                            </div>
+
+
+<h3 style="padding-left: 20px; padding-bottom: 20px;">Issue List by Priority</h3>
+   
+      <div class="row">
         
-        Happy New year 
-        
-        
+          
+      <div class="col-lg-6 col-xl-4">
+          <div class="card mb-3 widget-content bg-premium-dark">
+              <div class="widget-content-wrapper text-white">
+                  <div class="widget-content-left">
+                      <div class="widget-heading">Critical</div>
+                      <div class="widget-subheading">Issues on Critical</div>
+                  </div>
+                  <div class="widget-content-right">
+                      <div class="widget-numbers text-warning"><span>{{key5}}</span></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="col-lg-6 col-xl-4">
+        <div class="card mb-3 widget-content bg-premium-dark">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">Highest</div>
+                    <div class="widget-subheading">Issues on Highest</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-warning"><span>{{key6}}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-6 col-xl-4">
+      <div class="card mb-3 widget-content bg-premium-dark">
+          <div class="widget-content-wrapper text-white">
+              <div class="widget-content-left">
+                  <div class="widget-heading">High</div>
+                  <div class="widget-subheading">Issues In High</div>
+              </div>
+              <div class="widget-content-right">
+                  <div class="widget-numbers text-warning"><span>{{key7}}</span></div>
+              </div>
+          </div>
+      </div>
+    </div>
+                            
+          </div>
+                    
       
     </div>
     
