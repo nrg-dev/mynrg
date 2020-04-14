@@ -127,7 +127,7 @@ if(this.username!=null || this.username!="") {
    // Alex login
    this.menuItems = [
      new MenuItem("DashBoard","/landingpage"),
-     new MenuItem("Job Poral","jobportal"),
+     new MenuItem("Poral","jobportal"),
      new MenuItem("Issues","datatableissues"),
      new MenuItem("Server Info","serverinfo"),
      new MenuItem("My Contacts","connection"),
