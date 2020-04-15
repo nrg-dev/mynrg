@@ -24,15 +24,22 @@ import { assertNotNull } from '@angular/compiler/src/output/output_ast';
 export class Filter {
   countryList:any;
   priorityList:any;
+  statusList:any;
   model: any = {};
   issue:Issue; 
   constructor(
     public dialogRef: MatDialogRef<Filter>,
+    private userService: UserService,
+
     ) {
       const country = require("../../../assets/country.json");
       const priority = require("../../../assets/priority.json");
+      const statusjson = require("../../../assets/issuestatus.json");
+
       this.countryList=country;
       this.priorityList=priority;
+      this.statusList=statusjson;
+
     }
 
   onNoClick(): void {
@@ -40,7 +47,16 @@ export class Filter {
   }
 
   apply(){
-
+    console.log(this.model.status);
+    this.userService.load(this.model.status)
+    .subscribe(
+        data => {
+        //data;
+        this.dialogRef.close(data);       },
+        error => {
+            alert('Error !!!!');
+        }
+    );
   }
 }
 @Component({
@@ -71,7 +87,7 @@ export class DatatableissuesComponent implements OnInit {
     private alertService: AlertService,
     ) { 
 
-      this.userService.load()
+      this.userService.load("all")
       .subscribe(
           data => {
           this.dataList = data;
@@ -91,21 +107,28 @@ export class DatatableissuesComponent implements OnInit {
   ngOnInit() {
   }
 
+  openfilter(): void{
+  let dialogRef = this.dialog.open(Filter).afterClosed()
+  .subscribe(response => {
+    this.dataList = response;
+    this.dataSource = new MatTableDataSource(this.dataList);
+    console.log(response.lenght);
+    console.log(response);
+  });
+}
+/*
   openfilter(): void {
-   
-      const dialogRef = this.dialog.open(Filter, {
-        
-         width: '60%',
+         const dialogRef = this.dialog.open(Filter, {
+       width: '60%',
   //  data: {name: this.name, animal: this.animal}
   });
-
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
+    console.log('Result-->'+result);
    // this.animal = result;
   });
 
 }    
-
+*/
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
@@ -115,7 +138,7 @@ export class DatatableissuesComponent implements OnInit {
  
   refresh() {
     console.log("before calling...ngOnInit......"); 
-    this.userService.load()
+    this.userService.load("all")
       .subscribe(
           data => {
               this.dataList = data;

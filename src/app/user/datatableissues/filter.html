@@ -7,8 +7,9 @@
 
       </select>
       <label for="priority"><b>Status</b></label>
-      <select placeholder="Choose" [(ngModel)]="model.priority" #priority="ngModel" id="priority" name="priority">
-        <option *ngFor="let list of priorityList" value="{{list.name}}">{{list.name}}</option>
+      <select placeholder="Choose" [(ngModel)]="model.status" #status="ngModel" id="status" name="status">
+        <option value="All">All</option>
+        <option *ngFor="let list of statusList" value="{{list.name}}">{{list.name}}</option>
       </select>
      
      
@@ -17,19 +18,23 @@
 
     <div class="row">
       <label for="priority"><b>Country</b></label>
-        <select placeholder="Choose" [(ngModel)]="model.priority" #priority="ngModel" id="priority" name="priority">
-          <option *ngFor="let list of priorityList" value="{{list.name}}">{{list.name}}</option>
+        <select placeholder="Choose" [(ngModel)]="model.country" #country="ngModel" id="country" name="country">
+          <option *ngFor="let list of countryList" value="{{list.name}}">{{list.name}}</option>
   
         </select>
-        <label for="priority"><b>Status</b></label>
+      <!--  <label for="priority"><b>Status</b></label>
         <select placeholder="Choose" [(ngModel)]="model.priority" #priority="ngModel" id="priority" name="priority">
           <option *ngFor="let list of priorityList" value="{{list.name}}">{{list.name}}</option>
         </select>
-       
+       -->
       
 
       
-      <button  (click)="apply()" style="width:auto;">Apply</button>
+</div>
+
+<div class="row">
+  <button  (click)="apply()" style="width:auto;">Apply</button>
+
 </div>
 <!--
 <div mat-dialog-actions>

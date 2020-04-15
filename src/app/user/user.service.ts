@@ -41,10 +41,10 @@ reportLoad(){
 
 
 // Load all the data
-load(){
+load(status:string){
     console.log("before calling load");
     //return this.http.get(this.commonURLIssues+'load');
-    return this.http.get(`${environment.apiUrl}${"issues/load"}`);
+    return this.http.get(`${environment.apiUrl}${"issues/load?status="+status}`);
 
     console.log("after calling load");
  
