@@ -5,7 +5,9 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { RouterModule, Routes, Router ,ActivatedRoute} from "@angular/router";
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserService } from '../user/user.service';
- 
+import { DatatableissuesComponent } from '../user/datatableissues/datatableissues.component';
+import {MatDialog, MatDialogConfig} from "@angular/material";
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -37,6 +39,7 @@ showToggle: string;
   private password;
   constructor( private router: Router , 
     private userService: UserService,
+    private dialog: MatDialog,
     public route: ActivatedRoute) { 
     //this.count=route.firstChild.children.length;
     
@@ -167,27 +170,32 @@ if(this.username!=null || this.username!="") {
      new MenuItem("./assets/images/menu.png","employeelist"),
      new MenuItem("./assets/images/logout.png","login"),
      new MenuItem('./assets/images/null.png',""),
-
-
    ]
  }
 }
 else{
   alert("Pls login");
 }
-   
-
-
-   
-
-  }
+}
 
   showDropdown() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
-
- 
- 
-
-
+  dialogConfig = new MatDialogConfig();
+  loadData(){
+   // this.router..isActive("datatableissues");
+   this.dialogConfig.disableClose = true;
+   this.dialogConfig.autoFocus = true;
+   this.dialogConfig.position = {
+     'top': '1000',
+     'left': '100'
+   };
+   this.dialog.open(DatatableissuesComponent,{
+     height: '80%', 
+   })
+   .afterClosed().subscribe(result => {
+   });
+     
+    
+  }
 }
