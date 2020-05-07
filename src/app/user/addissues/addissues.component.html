@@ -8,11 +8,11 @@
       <div class="container">
   
         <label for="clientName"><b>Client Name</b></label>
-        <input type="text" [(ngModel)]="model.clientName" #clientName="ngModel" placeholder="Enter Client Name" name="clientName" required>
+        <input type="text" [(ngModel)]="model.clientName" #clientName="ngModel" placeholder="Enter Client Name" name="clientName" autocomplete="off" required>
       
   
         <label for="issueNotes"><b>Issue Desc</b></label>
-        <textarea [(ngModel)]="model.issueNotes" #issueNotes="ngModel" placeholder="Enter Issue" name="issueNotes" required>
+        <textarea [(ngModel)]="model.issueNotes" #issueNotes="ngModel" placeholder="Enter Issue" name="issueNotes" autocomplete="off" required>
       </textarea>
         <label for="priority"><b>Priority</b></label>
   

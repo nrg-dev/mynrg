@@ -1,9 +1,13 @@
 * {
-    font-family: sans-serif;
-    color:black;
-    background-color: white;
+    color:white;
     box-sizing: border-box;
   }
+
+  ::ng-deep .mat-dialog-container{
+    background-color: #243c48
+    !important;
+  }
+
 
    /* Full-width input fields */
    input[type=text], input[type=password],textarea,select {
@@ -12,9 +16,8 @@
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
-    background: #f1f1f1;
-    color:black;
-  }
+    background-color: #243c48
+   }
   
   .left {
     width: 100%;
@@ -58,7 +61,7 @@
 .img-space {
   border: dashed 1px #d3d3d3;
   border-radius: 8px;
-  background-color: #f2f2f2;
+  background-color: #243c48;
   height: auto;
   width: 100%;
   padding: 10px;
