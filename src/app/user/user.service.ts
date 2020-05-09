@@ -30,6 +30,17 @@ save(issue: Issue){
       ); 
 }
 
+//------- Save Portal ----------
+saveComments(issue: Issue){
+  console.log('service....');
+ // return this.http.post<Issue>(this.commonURLIssues+'save',issue);
+  return this.http.post<Issue>(
+      `${environment.apiUrl}${"issues/saveComments"}`,
+      issue
+    ); 
+}
+
+
 // Load all the data
 reportLoad(){
   console.log("before calling reportLoad");
@@ -56,6 +67,15 @@ get(id:number){
     return this.http.get<Issue>(`${environment.apiUrl}${"issues/get"+'?id='+id}`);
 
 }
+// get only one data
+getComments(id:number){
+  //return this.http.get<Issue>(this.commonURLIssues+'get?id='+id);
+  return this.http.get<Issue>(`${environment.apiUrl}${"issues/loadComments"+'?id='+id}`);
+
+}
+
+
+
 
 // Update portal
 

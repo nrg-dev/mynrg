@@ -56,6 +56,7 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
+import { UsermgntComponent } from './usermgnt/usermgnt.component';
 
 
 const routes: Routes = [
@@ -65,7 +66,9 @@ const routes: Routes = [
   { path: 'viewjobportal', component: ViewjobportalComponent },
   { path: 'connection', component: ConnectionComponent },
   { path: 'bank', component: BankComponent },
+  { path: 'usermgnt', component: UsermgntComponent },
 
+  
 ];
 
 
@@ -83,6 +86,7 @@ const routes: Routes = [
     BankComponent,
     AddBank,
     ViewBank,
+    UsermgntComponent,
   ],
   imports: [
     CommonModule,

@@ -1,12 +1,32 @@
-* {
-    color:white;
-    box-sizing: border-box;
-  }
+
 
   ::ng-deep .mat-dialog-container{
     background-color: #243c48
     !;
   }
+
+  .textarea-container {
+  background-color: #243c48;
+  height: 400px;
+
+}
+.textarea-container textarea {
+  width: 100%;
+  box-sizing: border-box;
+  height: 400px;
+
+}
+.textarea-container button {
+  top: -89px;
+  right: -1px;
+  position: relative;
+  color: white;
+  background-color: blue;
+  width: 10% !important;
+}
+label , summary , h1, p {
+  color: #97A4AC !important;
+}
 
 
    /* Full-width input fields */
@@ -17,8 +37,10 @@
     display: inline-block;
     border: none !important;
     background-color: #243c48 !important;
+    color: white;
+
    }
-  
+
   .left {
     width: 100%;
   }

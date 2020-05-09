@@ -135,6 +135,7 @@ if(this.username!=null || this.username!="") {
      new MenuItem("Server Info","serverinfo"),
      new MenuItem("My Contacts","connection"),
      new MenuItem("My Bank","bank"),
+     new MenuItem("Users","usermgnt"),
 
      new MenuItem("Log Out","logout"),
      new MenuItem("",""),
@@ -143,6 +144,7 @@ if(this.username!=null || this.username!="") {
 
 
    this.menuItemsIcons = [
+     new MenuItem("./assets/images/menu.png","/landingpage"),
      new MenuItem("./assets/images/menu.png","/landingpage"),
      new MenuItem("./assets/images/menu.png","/landingpage"),
      new MenuItem("./assets/images/menu.png","/landingpage"),

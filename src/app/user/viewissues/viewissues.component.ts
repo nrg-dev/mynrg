@@ -7,6 +7,8 @@ import { AlertComponent } from 'src/app/alert/alert/alert.component';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { AlertService } from 'src/app/alert/alert.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-viewissues',
@@ -19,6 +21,7 @@ export class ViewissuesComponent implements OnInit {
   issue:Issue;
   priorityList:any;
   countryList:any;
+  commentsList:any;
   statusList:any;
   dialogConfig = new MatDialogConfig();
 
@@ -51,6 +54,19 @@ export class ViewissuesComponent implements OnInit {
          }
      );
   
+     this.userService.getComments(this.data)
+     .subscribe(
+         res => {
+             this.commentsList = res;
+             console.log(this.commentsList[0].date);
+             console.log(this.commentsList[0].issueComments);
+             console.log("Comments Lenght-->"+this.commentsList.lenght);             
+         },
+         error => {
+             alert('Error !!!!');
+         }
+     );
+
      }
   ngOnInit() {
     console.log(this.data);
@@ -67,7 +83,41 @@ export class ViewissuesComponent implements OnInit {
    transform(){
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.model.cardImageBase64);
    }
-   editRemove(value:string) {
+   utcDateTime: any;
+
+   addComments(){ 
+    let local_date = moment.utc(this.utcDateTime).local().format('YYYY-MM-DD HH:mm:ss a');
+    console.log(local_date)
+    console.log("Issue ID--->"+this.model.issueId);
+    this.model.byissueId = this.model.issueId;
+    this.model.date = local_date;
+    this.model.addedPerson = localStorage.getItem("currentusername");
+
+    // alert("addComments"+this.model.issueComments);
+     this.userService.saveComments(this.model)
+              .subscribe(
+                  data => {
+                      console.log('return value -->'+data);
+                      this.model.portalname=null;
+                          console.log('If User Exits'); 
+                          this.alertService.success("Comments Added.");
+                          setTimeout(() => {
+                            this.alertService.clear();
+                          }, 1000);
+                    
+                  },
+                  error => {
+                    alert("Server error...");
+  
+                  });
+    this.dialogRef.close();
+
+ 
+              
+     this.model.addcomments == null;
+  }
+  
+  editRemove(value:string) {
      if(value=="PUT"){
      // alert(" PUT ID --->"+value);
       console.log("Update Issue --->"+this.model.issueId);

@@ -1,6 +1,9 @@
 html, body {
     font-family: 'Muli';
-}
+  }
+  label {
+    color: #97A4AC;
+  }
 ::ng-deep .mat-dialog-container{
     background-color: #243c48
     !important;
