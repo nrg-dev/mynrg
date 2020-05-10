@@ -3,6 +3,7 @@ import { User } from '../_models/index';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AlertService } from '../alert/alert.service';
+import { AuthenticationService } from '../_services';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(  private router: Router,
     private alertService: AlertService,
+    private authService:AuthenticationService,
     ) { }
 
   ngOnInit() {
@@ -29,6 +31,8 @@ export class LoginComponent implements OnInit {
     this.model.currentpassword='';
     localStorage.setItem('currentusername',null);
     localStorage.setItem('currentpassword',null);
+    localStorage.setItem('usertype',null);
+
   }
 
   onClickSubmit(){
@@ -38,21 +42,38 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('currentusername',this.model.currentusername);
     localStorage.setItem('currentpassword',this.model.currentpassword);
 
-    if(
-    (this.model.currentusername=="admin" && this.model.currentpassword=="admin@123")
-    ||
-    (this.model.currentusername=="user" && this.model.currentpassword=="user")
-    ||
-    this.model.currentusername=="alex" && this.model.currentpassword=="alex@123"){
-     
-      this.router.navigate(['/landingpage']);
+
+    this.authService.isAuthentication(this.model.currentusername,this.model.currentpassword)
+              .subscribe(
+                  data => {
+                      console.log('return value -->'+data);
+                      this.model = data;
+                      console.log("Status-->"+this.model.userstatus);
+                      console.log("UserType-->"+this.model.usertype);
+                      let temp = this.model.usertype;
+                      if(this.model.usertype != null) {
+                        localStorage.setItem('usertype',temp);
+                        console.log('User found'); 
+                       // if(this.model.usertye == "maker/authorizer") {
+                       //   this.router.navigate(['/landingpage']);
+                       // } else {
+                          this.router.navigate(['/landingpage']);
+                      //  }
+
+                      }else {
+                        console.log('User not found'); 
+                        this.alertService.error("Invalid User name or Invalid Password.");
+
+                      }
+                         
+                    
+                  },
+                  error => {
+                    this.alertService.error("Server Error.");
+
+                  });
 
 
-    }
-    else {
-      this.alertService.error(message);
-
-    }
 
   }
 

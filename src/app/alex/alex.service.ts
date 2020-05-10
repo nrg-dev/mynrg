@@ -182,4 +182,21 @@ removeBank(id:number){
 }
 
 
+
+//*********************User Management************************
+
+// Save  
+
+
+// Load 
+loadUserInfo(type:string){
+    //return this.http.get(this.commonURL+'bank/load');
+ //   return this.http.get(`${environment.apiUrl}${"usermgnt/loadUserInfo"}`);
+    return this.http.get(`${environment.apiUrl}${"usermgnt/loadUserInfo"+'?type='+type}`); 
+
+
+}
+
+
+
 }

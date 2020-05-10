@@ -37,6 +37,7 @@ showToggle: string;
   static showParent: any;
   public username;
   private password;
+  public role;
   constructor( private router: Router , 
     private userService: UserService,
     private dialog: MatDialog,
@@ -99,10 +100,18 @@ showToggle: string;
      }
    });
 
-   this.username=localStorage.getItem("currentusername");
-   this.password=localStorage.getItem("currentpassword");
-if(this.username!=null || this.username!="") { 
-  if(this.username=="admin" && this.password=="admin@123"){
+  let type = localStorage.getItem("usertype");
+  this.username=localStorage.getItem("currentusername");
+  if(this.username.match('b')){
+  this.role = "Sales";  
+  }
+  if(this.username.match('d')){
+   this.role = "Developer";  
+    }
+    if(this.username.match('a')){
+      this.role = "Super Admin";  
+      }
+  if(type == "admin"){
     //admin login
    this.menuItems = [
      new MenuItem("DashBoard","/landingpage"),
@@ -125,8 +134,7 @@ if(this.username!=null || this.username!="") {
 
    ]
   }
-  if(this.username=="alex" && this.password=="alex@123"){
-
+  if(type == "maker/authorizer"){
    // Alex login
    this.menuItems = [
      new MenuItem("DashBoard","/landingpage"),
@@ -158,7 +166,7 @@ if(this.username!=null || this.username!="") {
    ]
  }
 
- if(this.username=="user" && this.password=="user"){
+ if(type == "maker"){
    // User login
    this.menuItems = [
      new MenuItem("DashBoard","/landingpage"),
@@ -175,10 +183,8 @@ if(this.username!=null || this.username!="") {
    ]
  }
 }
-else{
-  alert("Pls login");
-}
-}
+
+
 
   showDropdown() {
     document.getElementById("myDropdown").classList.toggle("show");
